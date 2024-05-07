@@ -1,1 +1,0 @@
-﻿var __testDataSource={items:[{dataFilePath:'Default.xlsx',dataFileFormat:'excel',dataFileFolder:'C:\\Users\\HP\\OneDrive\\Desktop\\UFT Framework Experiment\\Enhanced\\TestResult\\2024-05-07_111338\\Checkout\\Add_to_Cart_And_Checkout\\AOS_Web_Checkout_02',namePairs:[]}]};
