@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Click Shop Now Button (Speakers)</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:03:19</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\c2bec99f-dd24-4409-bab9-900a00de0186.png</StepCustomImagePath>
+      <IconKey>da829a4b9db94481ae6fa0ff19df9e2f</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Click Accordion Filter</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:03:22</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\2d7084cf-35e4-46d9-a6e4-aa7d2e76fab4.png</StepCustomImagePath>
+      <IconKey>da829a4b9db94481ae6fa0ff19df9e2f</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Click CheckBox Bose Brand</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:03:23</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\7d7bc31e-4f7a-43f4-8b4b-22df13ed00d1.png</StepCustomImagePath>
+      <IconKey>da829a4b9db94481ae6fa0ff19df9e2f</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Verification Failed</Name>
+    <Description>Expected Result:Bose Soundlink Speaker IV
+Actual Result: Bose Soundlink Bluetooth Speaker III</Description>
+    <StartTime>2024-05-07 12:03:28</StartTime>
+    <Result>Failed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\0e5ce430-198e-4e65-8998-7ddc3c17c095.png</StepCustomImagePath>
+      <IconKey>da829a4b9db94481ae6fa0ff19df9e2f</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <IsPlainTextStepInfo>True</IsPlainTextStepInfo>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-05-07 12:02:58</StartTime>
+    <Duration>31</Duration>
+    <Result>Failed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>c0ff6e63f7a5468d8229c4c038a25273</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-05-07 12:02:58</StartTime>
+    <Duration>31</Duration>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>eeb74af5ec8a4738acbd797488a2e08a</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>AOS_Web_Checkout_02</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-05-07 12:02:57</StartTime>
+    <Duration>32</Duration>
+    <Result>Failed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>c159d7282c8940e5b144c1705a4a5b74</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>AOS_Web_Checkout_02</ResultName>
+    <RunStartTime>2024-05-07 12:02:57</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>

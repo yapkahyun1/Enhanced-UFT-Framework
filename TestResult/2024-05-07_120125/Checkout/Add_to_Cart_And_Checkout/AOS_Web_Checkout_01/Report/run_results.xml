@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Click Account Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:24</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\73fcd2ed-b164-4940-bc7c-fdd405d13f7f.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Insert Username</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:26</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\83d080ca-0a4e-418e-9f68-0f966e5f15f0.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Insert Password</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:27</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\e658744c-8ba6-4569-b551-59b947c95f3d.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 4: Click Sign In</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\679cd91d-7196-4d90-971f-43b39ef0e524.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 5: Click Item Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:31</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\cc57a357-c828-4328-bf10-d0834e2b9ebe.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 6: Select Item</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:34</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\c6880c4b-6794-434f-917e-2719d7252a74.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 7:  Add to Cart</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:37</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\02b21052-3224-406c-8db2-f791f7d475a2.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 8: Checkout item</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:38</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\0eb314e7-471d-435f-8e29-2462b81bb6cf.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 9: Click Next Button </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:41</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\a20a34bb-20b0-436c-b3ea-cfd322ec1af3.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 10: Insert Safepay Username</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:42</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\b09e0cd9-08cd-46e7-a58b-01b58abace54.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 11: Insert Safepay Password</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:43</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\bea37df0-fd39-4fcc-aff8-c5353cb492af.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 12: Click Pay Now Button </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:44</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\f319c7d7-8104-4826-8e30-af68ea63f2dd.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 13: Click Account Button </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:46</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\09bdd1f3-1fdb-4f64-b15b-57fcb54c3836.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 12: Click Sign Out Button </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:02:47</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\12220345-982b-48b3-8ea5-af7a846a0c9d.png</StepCustomImagePath>
+      <IconKey>448445286de74215ace211bc7cf1f988</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-05-07 12:02:01</StartTime>
+    <Duration>46</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>f3bd3337aa6d4749aa22f4c970e6f985</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-05-07 12:02:01</StartTime>
+    <Duration>46</Duration>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>3f1c3f49faaf4db4a8060a647ffe04a1</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>AOS_Web_Checkout_01</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-05-07 12:02:00</StartTime>
+    <Duration>47</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>6f80b5943ec7482d855e9a0c52c534bf</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>AOS_Web_Checkout_01</ResultName>
+    <RunStartTime>2024-05-07 12:02:00</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>

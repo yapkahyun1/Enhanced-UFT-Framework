@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Click Contact Us Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:03:59</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\148d9e7c-b0ad-4cb9-9e02-3e7da3671f41.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Select Category</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:04:02</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\8efae5a3-38e4-4624-a231-8b02c7e72dec.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Select Product</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:04:05</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\7c0a38a1-499a-4ae7-bd4e-a60c438d0765.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 4: Insert Email</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:04:05</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\083414ab-be19-4e9b-a9a4-9e067cfbd7f2.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 5: Insert Subject</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:04:05</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\acb88059-4aed-4cb6-b536-9c82a4c7e915.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 6: Click Send Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-07 12:04:05</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\8fa63638-36c8-4129-92de-cec78907fcfb.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 7: Verify Inquiries Sent</Name>
+    <Description>Expected Result:Thank you for contacting Advantage support.
+Actual Result: Thank you for contacting Advantage support.</Description>
+    <StartTime>2024-05-07 12:04:06</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\1fda99c8-1cf5-40e1-8f69-94a42a68c362.png</StepCustomImagePath>
+      <IconKey>ac01950fb73b41f19741055acc48b6e5</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <IsPlainTextStepInfo>True</IsPlainTextStepInfo>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-05-07 12:03:37</StartTime>
+    <Duration>30</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>84e6f77c6ee64c06b5a27e603e296bca</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-05-07 12:03:37</StartTime>
+    <Duration>30</Duration>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>52bfad0de5a84d5c938e69687d124ad9</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>AOS_Web_ContactUs_01</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-05-07 12:03:36</StartTime>
+    <Duration>31</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>f9b389cc54a64f05b0b4853dc9d762f3</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>AOS_Web_ContactUs_01</ResultName>
+    <RunStartTime>2024-05-07 12:03:36</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>
