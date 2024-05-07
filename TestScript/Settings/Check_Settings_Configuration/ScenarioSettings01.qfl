@@ -1,0 +1,30 @@
+﻿
+
+Function SettingsCheck()
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	Wait 2
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewMenu"), "tap", "Step 1: Select Main Menu Button", "", 1)
+	
+	wait 1
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=SETTINGS"), "tap", "Step 2: Select Main Menu Button", "", 1)
+		
+	WaitObject AOSApp.MobileButton("text:=CONNECT"), "isclickable", "True", 8
+	
+	Call VerifyText(AOSApp.MobileToggle("text:=Enable facial authentication"), "Enable facial authentication", 1, "Step 3: Verify Settings Page")
+	
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewMenu"), "tap", "Step 4: Select Main Menu Button", "", 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=TABLETS"), "tap", "Step 5: Select Tablets Category", "", 1)
+	
+	WaitObject AOSApp.MobileLabel("text:="&DataTable("ProductName", dtGlobalSheet)&""), "isclickable", "True", 8
+	
+	Call VerifyText(AOSApp.MobileLabel("text:="&DataTable("ProductName", dtGlobalSheet)&""), DataTable("ProductName", dtGlobalSheet), 1, "Step 6: Verify Tablets Product Page")
+	
+	
+	
+	
+End Function

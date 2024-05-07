@@ -1,0 +1,10 @@
+#Test Data Configuration
+Environment=staging
+
+#Mobile Configuration
+OSType=IOS
+DeviceID=00008020-000D646C1182002E
+Identifier=com.mf.iShopping
+Instrumented=False
+
+

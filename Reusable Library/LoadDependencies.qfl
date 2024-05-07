@@ -1,0 +1,54 @@
+﻿
+
+
+Function LoadDependencies(ScenarioFunctionLib, ExcelTestDataFileName, ExcelFileTestDataSheet)
+	
+	'***Load 3 function library --> CoreLib, Reusable, Scenario Lib
+
+	'Get the scenario path
+	ScenarioFolderPath = Left (Environment.Value("TestDir"), Instr(Environment.Value("TestDir"), Environment.Value("TestName")) - 1)
+
+	
+	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\CoreLib.qfl"
+	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Reusable Library\Reusable.qfl"
+	'Load Scenario Function Library
+	LoadFunctionLibrary ScenarioFolderPath & ScenarioFunctionLib
+
+
+
+	
+	ImportTestDataFromExcel ExcelTestDataFileName, ExcelFileTestDataSheet
+	
+	CheckIteration()
+	
+	
+End Function
+
+
+
+Function LoadAdditionalFunctionLibrary(ModuleFolder, ScenarioFolder, ScenarioFuncLibName)
+
+	'Get the scenario path
+	LoadFunctionLibrary GetActualProjPath("TestScriptPath") & ModuleFolder & "\" & ScenarioFolder & "\" & ScenarioFuncLibName
+	
+		
+End Function
+
+
+
+Function GetActualProjPath(TypesOfPath)
+	Dim ProjPath, ActualProjPath, getProjPathCount
+	
+	ProjPath = Environment.Value("TestDir")
+	getProjPathCount = Instr(ProjPath, "\TestScript")
+	If UCASE(TypesOfPath) = "FRAMEWORKPATH" Then
+			ActualProjPath = Left(ProjPath, getProjPathCount)
+		ElseIf UCASE(TypesOfPath) = "TESTSCRIPTPATH" Then
+			ActualProjPath = Left(ProjPath, getProjPathCount) & "TestScript\"
+	End If
+
+	
+	
+	GetActualProjPath = ActualProjPath
+	
+End Function

@@ -1,0 +1,15 @@
+URL=https://advantageonlineshopping.com/#/
+Browser=Chrome
+
+
+#Account Credential
+AccountNumber=8881048415068
+
+
+
+#User ID
+Username=pepsi10
+Password=zaq123
+
+
+

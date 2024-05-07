@@ -1,0 +1,68 @@
+﻿Function AddToCart()
+	
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	wait 5
+	
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewMenu"), "tap", "Step 1: Select Main Menu Button", "", 1)
+'	wait 2
+'	If Not AOSApp.MobileLabel("text:="&DataTable("Username", dtGlobalSheet)&"").Exist Then
+'
+'		Else
+'			AOSDevice.Back
+'			wait 1
+'	End If
+	wait 1
+	Reporter.Filter = rfDisableAll
+	LoadAdditionalFunctionLibrary "Login", "Login_Existing_UserProfile", "ScenarioLoginAndroid01.qfl"
+	PerformAOSLoginMobile()
+
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=HEADPHONES"), "tap", "Step 2: Select Laptop Category", "", 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=BEATS STUDIO 2 OVER-EAR MATTE BLACK HEADPHONES"), "tap", "Step 3: Select Laptop", "", 1)
+
+	wait 2
+	Call ExecuteTestSteps(AIUtil("button", "ADD TO CART"), "Click", "Step 4: Click Add To Cart Button", "", 1)
+
+	Wait 5
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewCart"), "Tap", "Step 5: Click Cart Icon", "", 1)
+	
+	WaitObject AOSApp.MobileLabel("text:=Remove"), "isclickable", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=checkoutButton"), "Tap", "Step 6: Click Checkout Button", "", 1)
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=Order Total:"), "isclickable", "False", 8
+	
+
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=PAY NOW"), "Tap", "Step 7: Click Pay Now Button", "", 1)
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=Your cart was successfully purchased"), "isclickable", "False", 8
+
+	
+	Call VerifyText(AOSApp.MobileLabel("text:=Your cart was successfully purchased"), "Your cart was successfully purchased",  1, "Step 8: Verify Order Status")
+
+	Call ExecuteTestSteps(AOSApp.MobileButton("resourceid:=com.Advantage.aShopping:id/imageViewCloseDialog"), "Tap", "Step 9: Click Close Button", "", 1)
+	
+	wait 4
+	
+	Reporter.Filter = rfDisableAll
+	LogoutAOSMobile()
+
+
+
+End Function
+
+
+Function LaunchAOSMobile()
+	LaunchApp DataTable("OSType", dtGlobalSheet), DataTable("DeviceID", dtGlobalSheet), DataTable("Identifier", dtGlobalSheet), DataTable("Instrumented", dtGlobalSheet)
+End Function
+
+

@@ -1,0 +1,1 @@
+﻿var __testDataSource={items:[{dataFilePath:'Default.xlsx',dataFileFormat:'excel',dataFileFolder:'C:\\Users\\HP\\OneDrive\\Desktop\\UFT Framework Experiment\\FrameworkExperiment\\TestScript\\Register\\Create_New_UserProfile\\AOS_Web_Register_01\\Res2',namePairs:[]}]};

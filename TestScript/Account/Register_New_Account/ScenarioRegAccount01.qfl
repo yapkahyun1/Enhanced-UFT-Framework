@@ -1,0 +1,81 @@
+﻿
+
+
+Function RegisterNewAccount()
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	
+	
+		
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 1: Click Menu Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=LOG IN"), "tap", "Step 2: Click Login Button", "", 1)
+	
+	
+	WaitObject AOSApp.MobileButton("accessibilityid:=LOGIN", "nativeclass:=XCUIElementTypeButton"), "isenabled", "True", 8 
+	
+	
+	Call ExecuteTestSteps(AIUtil("button", ""), "Click", "Step 3: Click Create Account Button", "", 1)
+	
+	wait 2
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=userNameTextFieldID"), "Set", "Step 4: Set Username", DataTable("Username", dtGlobalSheet), 1)
+
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=emailTextFieldID"), "Set", "Step 5: Set Email", DataTable("Email", dtGlobalSheet), 1)
+
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=passwordTextFieldID"), "Set", "Step 6: Set Password", DataTable("Password", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=confirmPasswordTextFielD"), "Set", "Step 7: Set Confirmed Password", DataTable("Password", dtGlobalSheet), 1)
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=PERSONAL DETAILS", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Optional Step: Dismiss Keyboard", "", 0)
+	
+	ScrollIOS()
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=firstNameTextFieldID"), "Set", "Step 8: Set First Name", DataTable("FirstName", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=lastNameTextFielD"), "Set", "Step 9: Set Last Name", DataTable("LastName", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=phoneNumberTextFieldID"), "Set", "Step 10: Set Phone Number", DataTable("PhoneNo", dtGlobalSheet), 1)
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=PERSONAL DETAILS", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Optional Step: Dismiss Keyboard", "", 0)
+	
+	
+	ScrollIOS()
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=stateTextFieldID"), "Set", "Step 11: Set State", DataTable("State", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=streetTextFieldID"), "Set", "Step 12: Set Street", DataTable("Street", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=cityTextFieldID"), "Set", "Step 12: Set City", DataTable("City", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=zipTextFieldID"), "Set", "Step 12: Set Zipcode", DataTable("Postcode", dtGlobalSheet), 1)
+	
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=ADDRESS", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Optional Step: Dismiss Keyboard", "", 0)
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=REGISTER", "nativeclass:=XCUIElementTypeButton"), "Tap", "Step 13: Click Register Button", "", 1)
+	
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 14: Click Menu Button", "", 1)
+	
+	wait 1
+		
+	Call VerifyTextIOS(AOSApp.MobileLabel("text:="&DataTable("LastName", dtGlobalSheet)&" "&DataTable("FirstName", dtGlobalSheet)&" "), DataTable("LastName", dtGlobalSheet)&" "&DataTable("FirstName", dtGlobalSheet),  1, "Step 15: Verify Account Creation Status")
+	
+	
+	
+End Function

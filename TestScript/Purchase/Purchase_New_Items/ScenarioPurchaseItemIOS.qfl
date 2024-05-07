@@ -1,0 +1,167 @@
+﻿
+
+Function PurchaseItems()
+	
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 1: Click Menu Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=LOG IN"), "tap", "Step 2: Click Login Button", "", 1)
+	
+	
+	AOSMobileLoginIOS()
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=LAPTOPS"), "tap", "Step 3: Select Laptop Category", "", 1)
+	
+	
+	wait 2
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=HP ENVY - 17t Touch Laptop"), "tap", "Step 4: Select Laptop", "", 1)
+	
+	WaitObject AOSApp.MobileButton("accessibilityid:=quantityButtonId"), "isenabled", "True", 8
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=quantityButtonId"), "tap", "Step 5: Select quantity button", "", 1)
+	
+	WaitObject AOSApp.MobileButton("accessibilityid:=Plus"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Plus"), "tap", "Step 6: Increase Quantity", "", 1)
+
+
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=APPLY", "nativeclass:=XCUIElementTypeStaticText"), "tap", "Step 7: Click Apply Button", "", 1)
+	
+	wait 2
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=ADD TO CART", "nativeclass:=XCUIElementTypeStaticText"), "tap", "Step 8: Click Add To Cart Button", "", 1)
+	
+	wait 3
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=cartItem"), "tap", "Step 9: Click Cart Button", "", 1)
+	
+	WaitObject AOSApp.MobileLabel("text:=Total:", "nativeclass:=XCUIElementTypeStaticText"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=checkout button", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 9: Click Checkout Button", "", 1)
+	
+	WaitObject AOSApp.MobileButton("accessibilityid:=PAY NOW", "nativeclass:=XCUIElementTypeButton"), "isenabled", "True", 8
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=PAY NOW", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 10: Click Pay Now Button", "", 1)
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=Thank you for buying", "nativeclass:=XCUIElementTypeStaticText"), "isenabled", "True", 8
+	
+	Call VerifyTextIOS(AOSApp.MobileLabel("text:=Thank you for buying"), "Thank you for buying",  1, "Step 11: Verify Order Status")
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Ok", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 12: Click OK Button", "", 1)
+	
+	wait 2
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 13: Click Menu Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=SIGN OUT", "nativeclass:=XCUIElementTypeStaticText"), "tap", "Step 14: Click Logout Button", "", 1)
+	
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Yes"), "tap", "Step 15: Click Yes Button", "", 1)
+	
+End Function
+
+
+
+Function FilterAndPurchase()
+	
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 1: Click Menu Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=LOG IN"), "tap", "Step 2: Click Login Button", "", 1)
+	
+	
+	AOSMobileLoginIOS()
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=Search", "nativeclass:=XCUIElementTypeSearchField"), "Set", "Step 3: Set Laptop Category", "Laptop", 1)
+	
+	wait 3
+	
+	Call ExecuteTestSteps(AIUtil("button", "Search"), "Click", "Step 4: Click Search Button", "", 1)
+	
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=FILTERS", "nativeclass:=XCUIElementTypeStaticText"), "isenabled", "True", 8 
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=FILTERS", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Step 5: Click Filters", "", 1)	
+	
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=BY COLOR", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Step 6: Click By Colors Category", "", 1)		
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=filterColorCell_55CDD5"), "Tap", "Step 7: Select Colours", "", 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=APPLY", "nativeclass:=XCUIElementTypeButton"), "Tap", "Step 8: Click Apply Button", "", 1)
+	
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=HP Pavilion x360 - 11t Touch Laptop", "nativeclass:=XCUIElementTypeStaticText"), "Tap", "Step 9: Select Laptop", "", 1)
+	
+	wait 5
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=ADD TO CART", "nativeclass:=XCUIElementTypeStaticText"), "tap", "Step 8: Click Add To Cart Button", "", 1)
+	
+	wait 3
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=cartItem"), "tap", "Step 9: Click Cart Button", "", 1)
+	
+	WaitObject AOSApp.MobileLabel("text:=Total:", "nativeclass:=XCUIElementTypeStaticText"), "isenabled", "True", 8
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=checkout button", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 9: Click Checkout Button", "", 1)
+	
+	WaitObject AOSApp.MobileButton("accessibilityid:=PAY NOW", "nativeclass:=XCUIElementTypeButton"), "isenabled", "True", 8
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=PAY NOW", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 10: Click Pay Now Button", "", 1)
+	
+	
+	WaitObject AOSApp.MobileLabel("text:=Thank you for buying", "nativeclass:=XCUIElementTypeStaticText"), "isenabled", "True", 8
+	
+	Call VerifyTextIOS(AOSApp.MobileLabel("text:=Thank you for buying"), "Thank you for buying",  1, "Step 11: Verify Order Status")
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Ok", "nativeclass:=XCUIElementTypeButton"), "tap", "Step 12: Click OK Button", "", 1)
+	
+	wait 2
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Menu"), "tap", "Step 13: Click Menu Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=SIGN OUT", "nativeclass:=XCUIElementTypeStaticText"), "tap", "Step 14: Click Logout Button", "", 1)
+	
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Yes"), "tap", "Step 15: Click Yes Button", "", 1)
+	
+	
+End Function

@@ -1,0 +1,76 @@
+﻿Function LoginAOS()
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	
+	
+	Wait 2
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewMenu"), "tap", "Step 1: Select Main Menu Button", "", 1)
+	wait 1
+	Call ExecuteTestSteps(AOSApp.MobileLabel("accessibilityid:=loginOrUserNameTextField"), "tap", "Step 2: Select Login Button", "", 1)
+
+	
+	WaitObject AOSApp.MobileEdit("accessibilityid:=User Name"), "isclickable", "True", 8
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=User Name"), "tap", "Step Optional: Click Username Field", "", 1)
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=User Name"), "set", "Step 3: Input Username Field", DataTable("Username", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=Password"), "tap", "Step Optional: Click Password Field", "", 1)
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=Password"), "set", "Step 4: Input Password Field", DataTable("Password", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Login"), "tap", "Step 5: Click Login Button", "", 1)
+	
+
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	Call ExecuteTestSteps(AOSApp.MobileObject("resourceid:=com.Advantage.aShopping:id/imageViewMenu"), "tap", "Step 6: Select Main Menu Button", "", 1)
+	wait 1
+	Call VerifyText(AOSApp.MobileLabel("text:="&DataTable("Username", dtGlobalSheet)&""), DataTable("Username", dtGlobalSheet), 1, "Step 7: Verify AOS Mobile Login Status")
+	
+	
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("text:=SIGN OUT"), "tap", "Step 8: Click Logout Button", "", 1)
+	wait 1
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("text:=YES"), "tap", "Step 9: Click Yes Button", "", 1)
+	wait 2
+
+
+	LaunchAOSWeb()
+	
+	LoginWebAOS()
+	
+	
+	CloseBrowser()
+	
+End Function
+
+
+
+Function PerformAOSLoginMobile()
+
+
+	Set AOSDevice = Device("ostype:=" & DataTable("OSType", dtGlobalSheet), "id:=" & DataTable("DeviceID", dtGlobalSheet))
+	Set AOSApp = AOSDevice.App("identifier:=" & DataTable("Identifier", dtGlobalSheet), "instrumented:=" & DataTable("Instrumented", dtGlobalSheet))
+	AIUtil.SetContext AOSDevice
+	
+	Call ExecuteTestSteps(AOSApp.MobileLabel("accessibilityid:=loginOrUserNameTextField"), "tap", "Optional Step 1: Select Login Button", "", 1)
+
+	
+	WaitObject AOSApp.MobileEdit("accessibilityid:=User Name"), "isclickable", "True", 8
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=User Name"), "tap", "(Optional Step): Click Username Field", "", 1)
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=User Name"), "set", "Optional Step 2: Input Username Field", DataTable("Username", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=Password"), "tap", "(Optional Step): Click Password Field", "", 1)
+	Call ExecuteTestSteps(AOSApp.MobileEdit("accessibilityid:=Password"), "set", "Optional Step 3: Input Password Field", DataTable("Password", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(AOSApp.MobileButton("accessibilityid:=Login"), "tap", "Optional Step 4: Click Login Button", "", 1)
+	
+
+	WaitObject AOSApp.MobileLabel("text:=LAPTOPS"), "isenabled", "True", 8
+	
+	
+End Function

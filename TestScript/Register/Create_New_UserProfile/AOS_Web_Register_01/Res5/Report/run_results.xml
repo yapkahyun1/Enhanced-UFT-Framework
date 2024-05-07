@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Click Account Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:23</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\a383a2e7-d6d8-4c0f-b179-b5fbeb7f26b7.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Click Create New Account Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:25</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\9fb52cb8-e1c5-46b3-b3d2-ba708eefa364.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Insert Username</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:26</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\cc46112c-f9df-4267-8c9a-4fdc614c5d55.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 4: Input Email</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:26</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\c72e6046-e84d-4d5d-9efc-032eacb94c4a.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 5: Insert Password</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:26</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\7b3b9004-7b54-43db-8ec5-6e0bf6f7504a.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 6: Input Confirm Password Field</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:27</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\2b2e8603-bd86-428e-9fbe-5d38e700c581.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 7: Input First Name</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:27</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\d2795c0a-ec6d-4b50-8f88-f53108ca34b3.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 8: Input Last Name</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:27</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\7458a5bc-03fe-4919-840c-46ce094313e9.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 9: Input Phone Number</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:28</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\b5b76ce8-0560-46ca-9bc4-c4c8be8e6eb1.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 10: Select Country</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\6adf479b-d468-4f45-96c2-323f2c87f87e.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 11: Input City Name</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\eae0b294-bfcf-46a2-9710-91a2de4ee8b1.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 12: Input Address</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\286918fb-99d7-4974-85bb-f3121d021905.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 13: Input State</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\9ef17c67-820e-4ac6-8a61-de04ca0247d7.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 14: Input Postcode Number</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:29</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\6014d1db-5110-4ccb-a186-8299ce0eca6c.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 15: Tick Checkbox </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:30</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\fc9d0f70-0f8d-4184-b2a8-7b9ba5260006.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 16: Click Register </Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-04-10 15:14:31</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\0bb84463-3322-47d2-b8cf-b69b88bd5353.png</StepCustomImagePath>
+      <IconKey>f0f9e770fee34c6f999ee8f82b46d8a1</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-04-10 15:13:51</StartTime>
+    <Duration>41</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>da38add175cd4d65a85566416f487e39</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-04-10 15:13:51</StartTime>
+    <Duration>41</Duration>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>3c34f8c4f484439eb381b961f3dd995b</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>AOS_Web_Register_01</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-04-10 15:13:50</StartTime>
+    <Duration>42</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>5f82ca03630a4af585bae48c86b49818</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Res5</ResultName>
+    <RunStartTime>2024-04-10 15:13:50</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>

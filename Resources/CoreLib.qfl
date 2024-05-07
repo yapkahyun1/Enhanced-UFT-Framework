@@ -1,0 +1,397 @@
+﻿'****Get the current path and navigate to the project path only to get the config and user property where it was located*****
+'Dim filePath, getProjPathPos, ActProjectPath
+'filePath = Environment.Value("TestDir")
+'getProjPathPos = Instr(filePath, "\TestScript")
+'ActProjectPath = Left(filePath, getProjPathPos)
+	
+Function CheckIteration()
+	If InStr(UCase(DataTable("Run", dtGlobalSheet)),"Y") > 0 Then
+'		If Not InStr(UCase(DataTable("Run", dtLocalSheet)),"Y") > 0 Then
+'			ExitActionIteration()
+'		End If		
+	Else
+		ExitTestIteration()
+	End If
+End Function
+
+
+
+Function GetProjPath()
+
+Dim filePath, getProjPathPos, ActProjectPath
+filePath = Environment.Value("TestDir")
+getProjPathPos = Instr(filePath, "\TestScript")
+ActProjectPath = Left(filePath, getProjPathPos)
+
+
+GetProjPath = ActProjectPath
+
+
+	
+End Function
+
+
+
+
+
+
+
+Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureOn)
+	Dim ScreenshotPath
+	
+	On Error Resume Next
+	
+	Reporter.Filter = rfDisableAll
+	ScreenshotPath = TakeScreenshot()
+	
+	Select Case UCase(action)	
+		Case "CLICK"
+			
+			ObjElement.Click
+		Case "TAP"
+			
+			ObjElement.Tap
+		Case "SET"
+			
+			ObjElement.Set TestData
+			
+		Case "SELECT"
+            		ObjElement.Select TestData	
+		
+	End Select
+	
+	Reporter.Filter = rfEnableAll
+	
+	If Err.Number <> 0 Then
+		ErrorDescription = Err.Description
+		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
+		
+		'**On Error Resume Next** will allow the script to continue executing if there is an error until it reaches the line where it generates the failed test steps, use the line below to reset the error handling to default behavior which is vbscript to halt the execution and display the error message
+		On Error GoTo 0
+		EndTestExecution()
+	Else
+		If ScreenCaptureOn = 1 Then
+				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed", ScreenshotPath
+			Else
+				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed"
+		End If
+		
+		
+	End If
+	
+	
+
+End Function
+
+
+
+Function getConfigProperties(configPropertiesType)
+	
+	Const ForReading = 1
+	Dim envType
+
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+	configLocation =  GetProjPath() & "config.txt"
+	
+	If Not FSO.FileExists(configLocation) Then
+			MsgBox "Config File Not Exist. Please check if your file exists or not", 0,"Configuration Error"
+		Else
+			Set configFile = FSO.OpenTextFile(configLocation, ForReading, False)
+		
+			Do While configFile.AtEndOfStream <> True
+				outputStr = configFile.ReadLine
+		'		SplitStr = Split(outputStr, "=")(1)
+		'		Print("Splitted Value: " & SplitStr)
+	'		
+				If Left(outputStr, Len(configPropertiesType)) = configPropertiesType Then
+					SplitStr = Split(outputStr, "=")(1)
+					Exit Do
+				End If
+			
+			Loop
+		
+			
+			configFile.Close
+		
+			getConfigProperties = SplitStr
+	End If
+	
+	Set FSO = Nothing
+	
+End Function
+
+
+Function getUserProperties(userPropertiesType)
+	
+	
+	Const ForReading = 1
+	Dim ProjPath
+	ProjPath = GetProjPath()
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+	UPLocation = ProjPath & "UserProperty.txt"
+	If Not FSO.FileExists(UPLocation) Then
+			MsgBox "UserProperty File Not Exist. Please check if your file exists or not", 0,"Configuration Error"
+			
+		Else
+			'	
+			Set configFile = FSO.OpenTextFile(UPLocation, ForReading, False)
+			
+			Do While configFile.AtEndOfStream <> True
+				outputStr = configFile.ReadLine
+			
+			'		SplitStr = Split(outputStr, "=")(1)
+			'		Print("Splitted Value: " & SplitStr)
+			'		
+				If Left(outputStr, Len(userPropertiesType)) = userPropertiesType Then
+					SplitStr = Split(outputStr, "=")(1)
+					Exit Do
+				End If
+			
+			Loop
+			
+			configFile.Close
+		
+			getUserProperties = SplitStr
+			
+	End If
+	
+	
+	Set FSO = Nothing
+	
+
+End Function
+
+
+
+
+Function WaitObject(objElement, PropertyType, PropertyValue, Seconds)
+	Reporter.Filter = rfDisableAll
+	Dim ConvertedSeconds
+	
+	ConvertedSeconds = Seconds * 1000
+	objElement.WaitProperty PropertyType, PropertyValue, ConvertedSeconds
+	
+End Function
+
+
+'*****Function Import Test Data From Excel************************
+Function ImportTestDataFromExcel(ExcelTestDataFileName, ExcelTestDataSheet)
+
+
+
+Dim configVal
+
+
+
+configVal = UCase(getConfigProperties("Environment"))
+Print(configVal)
+
+If NOT configVal = "SIT" and NOT configVal = "UAT" and NOT configVal = "STAGING" Then
+		MsgBox "There is no such environment test data available! Please check your config files", 0,"Configuration Error"
+	Else
+		TestDataPath = GetProjPath & "TestData" & "\" & configVal &  "\" & ExcelTestDataFileName
+		
+End If
+
+
+
+		DataTable.ImportSheet TestDataPath, Trim(ExcelTestDataSheet), dtGlobalSheet
+		
+		DataTable.GlobalSheet.AddParameter "BrowserType", getUserProperties("Browser")
+		DataTable.GlobalSheet.AddParameter "URL", getUserProperties("URL")
+		
+		
+		'Here will add Parameter for Mobil (Android and IOS)
+		DataTable.GlobalSheet.AddParameter "OSType", getConfigProperties("OSType")
+		DataTable.GlobalSheet.AddParameter "DeviceID", getConfigProperties("DeviceID")
+		DataTable.GlobalSheet.AddParameter "Identifier", getConfigProperties("Identifier")
+		DataTable.GlobalSheet.AddParameter "Instrumented", getConfigProperties("Instrumented")
+
+
+
+
+End Function
+
+
+
+
+'-----------------------------Function Generate TimeStamp-----------------------------------
+
+Function TimeStampNow()
+		
+Dim strDateNow
+
+strDateNow = Now()
+
+TimeStampFormat =  Year(strDateNow) & "-" &Right("00" & Month(strDateNow), 2) & "-" & Right("00" & Day(strDateNow), 2) & "_"  & Right("00" & Hour(strDateNow), 2) & Right("00" & Minute(strDateNow),2) & Right("00"& Second(strDateNow),2)
+
+
+TimeStampNow = TimeStampFormat
+	
+End Function
+
+'-----------------------------Function Generate TimeStamp-----------------------------------
+
+
+'-----------------------------Function Take Screenshot-----------------------------------
+
+Function TakeScreenshot()
+
+	Dim FullScreenshotPath
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+	SnapshotFolderPath = Environment.Value("ResultDir") & "\Report\Resources\Snapshots"
+	If Not FSO.FolderExists(SnapshotFolderPath) Then
+		FSO.CreateFolder(SnapshotFolderPath)
+	End If
+	
+	Set FSO = Nothing
+	
+	TakeScreenshot = SnapshotFolderPath & "\Screenshot_" & TimeStampNow() & ".png"
+	Desktop.CaptureBitmap TakeScreenshot, True
+	
+End Function
+
+
+
+
+'-----------------------------Function Take Screenshot-----------------------------------
+
+
+Function CloseBrowser()
+	Reporter.Filter = rfDisableAll
+	While Browser("CreationTime:=0").Exist(0)   
+	Browser("CreationTime:=0").Close
+	Wend
+
+End Function
+
+Function LaunchBrowser(BrowserType, URL)
+	
+	CloseBrowser()
+	Wait 1
+	SystemUtil.Run BrowserType & ".exe" ,"","","",3
+	Wait 1
+	Set LaunchBrowser = Browser("CreationTime:=0")
+	Wait 1
+	LaunchBrowser.ClearCache
+	Wait 1
+	LaunchBrowser.Navigate URL
+	Wait 1
+	AIUtil.SetContext Browser("CreationTime:=0")
+'	If AIUtil("button", "Adva nced").Exist Then
+'		AIUtil("button", "Adva nced").Click
+'		Sendkeys Browser("CreationTime:=0"), "{TAB}"
+'		Sendkeys Browser("CreationTime:=0"), "~"
+'	End If
+	LaunchBrowser.Sync
+	wait 2
+	LaunchBrowser.Maximize
+
+End Function
+
+
+
+
+
+Function EndTestExecution()
+	
+	Reporter.Filter = rfDisableAll
+	'SystemUtil.CloseProcessByName("chrome.exe")
+	While Browser("CreationTime:=0").Exist(0)   
+	Browser("CreationTime:=0").Close
+	Wend
+	
+	ExitTest()
+	
+	
+End Function
+
+
+
+
+Function LaunchApp(OsType, DeviceId, AppIdentifier, AppInstrumented)
+
+	Set oDevice=Device("Class Name:=Device","ostype:=" & OsType ,"id:=" & DeviceId)
+	Set oApp=oDevice.App("Class Name:=App","identifier:=" & AppIdentifier ,"instrumented:=" & AppInstrumented)
+	Set	LaunchApp=oApp
+	'			oApp.Launch Install, Restart
+	oApp.Launch DoNotInstall, Restart
+	'			oApp.Launch
+	oDevice.OpenViewer
+End Function
+
+
+
+
+'********************Verification Function Section****************************
+
+
+
+
+Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
+
+
+	objectText = trim(actualObject.GetROProperty("text"))
+
+	
+	ScreenshotPath = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	If expect = objectText Then
+		If ScreenCaptureOn = 1 Then
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
+			Else
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
+		End If
+		
+	Else
+		Reporter.Filter = rfEnableAll
+		Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
+		EndTestExecution()
+	End If
+
+	objectText = ""
+End Function
+
+
+Function VerifyTextIOS(actualObject, expect, ScreenCaptureOn, stepName)
+
+
+	objectText = trim(actualObject.GetTOProperty("text"))
+
+	
+	ScreenshotPath = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	If expect = objectText Then
+		If ScreenCaptureOn = 1 Then
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
+			Else
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
+		End If
+		
+	Else
+		Reporter.Filter = rfEnableAll
+		Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
+		EndTestExecution()
+	End If
+
+	objectText = ""
+End Function
+
+
+Function ScrollWeb(PageObj)
+	wait 3
+	Reporter.Filter = rfDisableAll
+	
+	PageObj.RunScript("window.scrollBy(0,900)")
+	
+End Function
+
+
+
+Function ScrollIOS()
+	wait 3
+	Reporter.Filter = rfDisableAll
+	
+	AIUtil.Scroll "down", 2
+	
+End Function

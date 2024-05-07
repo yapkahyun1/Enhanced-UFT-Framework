@@ -1,0 +1,99 @@
+﻿
+
+Function RegisterUserProfile()
+	
+	
+
+
+Environment.Value("CurrActiveScreen") = "Advantage Shopping"
+Set AOSBrowser = Browser("title:=Advantage Shopping")
+Set AOSPage = AOSBrowser.Page("title:=Advantage Shopping")
+
+
+'Wait for the browser to fully load
+
+AOSPage.Sync
+Wait 5
+
+
+
+
+Wait 1
+Call ExecuteTestSteps(AOSPage.WebElement("html id:=hrefUserIcon"), "click", "Step 1: Click Account Button", "", 1)
+Wait 1
+Call ExecuteTestSteps(AOSPage.WebElement("xpath:=//a[text()='CREATE NEW ACCOUNT']"), "click", "Step 2: Click Create New Account Button", "", 1)
+Wait 1
+
+
+'Account Details
+
+'Input Username
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=usernameRegisterPage"), "set", "Step 3: Insert Username", DataTable("Username", dtGlobalSheet), 1)
+
+
+'Input Email
+
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=emailRegisterPage"), "set", "Step 4: Input Email", DataTable("Email", dtGlobalSheet), 1)
+
+
+'Input Password
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=passwordRegisterPage"), "set", "Step 5: Insert Password", DataTable("Password", dtGlobalSheet), 1)
+
+
+'Input Confirm Password
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=confirm_passwordRegisterPage"), "set", "Step 6: Input Confirm Password Field", DataTable("Password", dtGlobalSheet), 1)
+
+'Personal Details
+
+'Input First Name
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=first_nameRegisterPage"), "set", "Step 7: Input First Name", DataTable("FirstName", dtGlobalSheet), 1)
+
+
+'Input Last Name
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=last_nameRegisterPage"), "set", "Step 8: Input Last Name", DataTable("LastName", dtGlobalSheet), 1)
+wait 1
+'Input Phone Number
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=phone_numberRegisterPage"), "set", "Step 9: Input Phone Number", DataTable("PhoneNo", dtGlobalSheet), 1)
+
+
+' Address Details
+
+'Input Country
+Call ExecuteTestSteps(AOSPage.WebList("name:=countryListboxRegisterPage"), "select", "Step 10: Select Country", DataTable("Country", dtGlobalSheet), 1)
+
+
+'Input City
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=cityRegisterPage"), "set", "Step 11: Input City Name", DataTable("City", dtGlobalSheet), 1)
+
+
+'Input Address
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=addressRegisterPage"), "set", "Step 12: Input Address", DataTable("Address", dtGlobalSheet), 1)
+
+'Input State
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=state_/_province_/_regionRegisterPage"), "set", "Step 13: Input State", DataTable("State", dtGlobalSheet), 1)
+
+
+'Input Postcode
+
+Call ExecuteTestSteps(AOSPage.WebEdit("name:=postal_codeRegisterPage"), "set", "Step 14: Input Postcode Number", DataTable("Postcode", dtGlobalSheet), 1)
+
+Call ExecuteTestSteps(AOSPage.WebElement("name:=i_agree"), "click", "Step 15: Tick Checkbox ", "", 1)
+Wait 1
+Call ExecuteTestSteps(AOSPage.WebElement("html id:=register_btn"), "click", "Step 16: Click Register ", "", 1)
+
+WaitObject AOSPage.WebElement("xpath:=//span[@id='tabletsTxt']"), "visible", "True", 8
+
+Call ExecuteTestSteps(AOSPage.WebElement("html id:=menuUserLink"), "click", "Step 17: Click Account Button ", "", 1)
+Wait 1
+Call VerifyText(AOSPage.WebElement("xpath:=//a[@id='menuUserLink']//following::span[text()='"&DataTable("Username", dtGlobalSheet)&"']"), DataTable("Username", dtGlobalSheet), 0, "Step 18: Verify Accout Created")
+
+Call ExecuteTestSteps(AOSPage.WebElement("xpath:=(//label[text()='Sign out'])[2]"), "click", "Step 19: Click Sign Out Button ", "", 1)
+
+wait 2
+	
+	
+	
+End Function
+
+
+
