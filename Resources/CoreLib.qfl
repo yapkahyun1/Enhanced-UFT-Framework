@@ -32,9 +32,6 @@ End Function
 
 
 
-Function Testingone
-	sadasdasda
-End Function
 
 
 
@@ -166,19 +163,20 @@ End Function
 
 
 
-Function WaitObject(objElement, PropertyType, PropertyValue, Seconds)
-	Reporter.Filter = rfDisableAll
-	Dim ConvertedSeconds
+'Function WaitObject(objElement, PropertyType, PropertyValue, Seconds)
+'	Reporter.Filter = rfDisableAll
+'	Dim ConvertedSeconds
+'	
+'	ConvertedSeconds = Seconds * 1000
+'	objElement.WaitProperty PropertyType, PropertyValue, ConvertedSeconds
+'	
+'End Function
+'
+
+Function WaitObject(objElement, SecondsToWait)
 	
-	ConvertedSeconds = Seconds * 1000
-	objElement.WaitProperty PropertyType, PropertyValue, ConvertedSeconds
+	WaitObject = objElement.Exist(SecondsToWait)
 	
-End Function
-
-
-
-Function WaitObject(TestObject, WaitTime)
-	WaitObject = TestObject.Exist(WaitTime)
 End Function
 
 

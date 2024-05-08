@@ -13,9 +13,8 @@ Function AddToCartAndCheckout()
 	
 	Wait 1
 	Call ExecuteTestSteps(AOSPage.WebElement("html id:=hrefUserIcon"), "click", "Step 1: Click Account Button", "", 1)
-	Wait 1
+	WaitObject AOSPage.WebEdit("name:=username"), 10
 	Call ExecuteTestSteps(AOSPage.WebEdit("name:=username"), "set", "Step 2: Insert Username", DataTable("Username", dtGlobalSheet), 1)
-	Wait 1
 	Call ExecuteTestSteps(AOSPage.WebEdit("name:=password"), "set", "Step 3: Insert Password", DataTable("Password", dtGlobalSheet), 1)
 	Wait 1
 	Call ExecuteTestSteps(AOSPage.WebButton("html id:=sign_in_btn"), "click", "Step 4: Click Sign In", "", 1)
@@ -28,9 +27,9 @@ Function AddToCartAndCheckout()
 	Call ExecuteTestSteps(AOSPage.WebElement("html id:=tabletsLink"), "click", "Step 5: Click Item Button", "", 1)
 	Wait 1
 	Call ExecuteTestSteps(AOSPage.WebElement("html id:=18"), "click", "Step 6: Select Item", "", 1)
-	Wait 1
+	WaitObject AOSPage.WebElement("xpath:=//button[@name='save_to_cart']"), 10
 	Call ExecuteTestSteps(AOSPage.WebElement("xpath:=//button[@name='save_to_cart']"), "click", "Step 7:  Add to Cart", "", 1)
-	Wait 1
+	wait 1
 	Call ExecuteTestSteps(AOSPage.WebElement("html id:=checkOutPopUp"), "click", "Step 8: Checkout item", "", 1)
 	Wait 1
 	Call ExecuteTestSteps(AOSPage.WebElement("xpath:=(//button[text()='NEXT'])[1]"), "click", "Step 9: Click Next Button ", "", 1)
