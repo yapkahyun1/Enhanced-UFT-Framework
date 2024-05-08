@@ -175,6 +175,12 @@ End Function
 
 
 
+Function WaitObject(TestObject, WaitTime)
+	WaitObject = TestObject.Exist(WaitTime)
+End Function
+
+
+
 
 
 '*****Function Import Test Data From Excel************************
