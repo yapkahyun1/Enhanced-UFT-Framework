@@ -3,6 +3,8 @@
 
 Function LoadDependencies(ScenarioFunctionLib, ExcelTestDataFileName, ExcelFileTestDataSheet)
 	
+	Reporter.Filter = rfDisableAll
+
 	'***Load 3 function library --> CoreLib, Reusable, Scenario Lib
 
 	'Get the scenario path
@@ -11,12 +13,10 @@ Function LoadDependencies(ScenarioFunctionLib, ExcelTestDataFileName, ExcelFileT
 	
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\CoreLib.qfl"
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Reusable Library\Reusable.qfl"
-	'Load Scenario Function Library
 	LoadFunctionLibrary ScenarioFolderPath & ScenarioFunctionLib
 
 
-
-	
+	'Import Test Data via this Function
 	ImportTestDataFromExcel ExcelTestDataFileName, ExcelFileTestDataSheet
 	
 	CheckIteration()
@@ -26,6 +26,7 @@ End Function
 
 
 
+'***************Function Load external or additional function library (Optional if needed)************************************
 Function LoadAdditionalFunctionLibrary(ModuleFolder, ScenarioFolder, ScenarioFuncLibName)
 
 	'Get the scenario path

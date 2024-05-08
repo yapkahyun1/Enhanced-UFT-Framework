@@ -40,7 +40,7 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 	
 	On Error Resume Next
 	
-	Reporter.Filter = rfDisableAll
+	
 	ScreenshotPath = TakeScreenshot()
 	
 	Select Case UCase(action)	
@@ -78,7 +78,7 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 		
 	End If
 	
-	
+	Reporter.Filter = rfDisableAll
 
 End Function
 
@@ -162,17 +162,6 @@ End Function
 
 
 
-
-'Function WaitObject(objElement, PropertyType, PropertyValue, Seconds)
-'	Reporter.Filter = rfDisableAll
-'	Dim ConvertedSeconds
-'	
-'	ConvertedSeconds = Seconds * 1000
-'	objElement.WaitProperty PropertyType, PropertyValue, ConvertedSeconds
-'	
-'End Function
-'
-
 Function WaitObject(objElement, SecondsToWait)
 	
 	WaitObject = objElement.Exist(SecondsToWait)
@@ -186,37 +175,33 @@ End Function
 '*****Function Import Test Data From Excel************************
 Function ImportTestDataFromExcel(ExcelTestDataFileName, ExcelTestDataSheet)
 
+	Dim configVal
+	
+	configVal = UCase(getConfigProperties("Environment"))
+	Print(configVal)
+	
+	If NOT configVal = "SIT" and NOT configVal = "UAT" and NOT configVal = "STAGING" Then
+			MsgBox "There is no such environment test data available! Please check your config files", 0,"Configuration Error"
+		Else
+			TestDataPath = GetProjPath & "TestData" & "\" & configVal &  "\" & ExcelTestDataFileName
+			
+	End If
+	
+	
 
+	DataTable.ImportSheet TestDataPath, Trim(ExcelTestDataSheet), dtGlobalSheet
+	
+	DataTable.GlobalSheet.AddParameter "BrowserType", getUserProperties("Browser")
+	DataTable.GlobalSheet.AddParameter "URL", getUserProperties("URL")
+	
+	
+	'Here will add Parameter for Mobil (Android and IOS)
+	DataTable.GlobalSheet.AddParameter "OSType", getConfigProperties("OSType")
+	DataTable.GlobalSheet.AddParameter "DeviceID", getConfigProperties("DeviceID")
+	DataTable.GlobalSheet.AddParameter "Identifier", getConfigProperties("Identifier")
+	DataTable.GlobalSheet.AddParameter "Instrumented", getConfigProperties("Instrumented")
 
-Dim configVal
-
-
-
-configVal = UCase(getConfigProperties("Environment"))
-Print(configVal)
-
-If NOT configVal = "SIT" and NOT configVal = "UAT" and NOT configVal = "STAGING" Then
-		MsgBox "There is no such environment test data available! Please check your config files", 0,"Configuration Error"
-	Else
-		TestDataPath = GetProjPath & "TestData" & "\" & configVal &  "\" & ExcelTestDataFileName
-		
-End If
-
-
-
-		DataTable.ImportSheet TestDataPath, Trim(ExcelTestDataSheet), dtGlobalSheet
-		
-		DataTable.GlobalSheet.AddParameter "BrowserType", getUserProperties("Browser")
-		DataTable.GlobalSheet.AddParameter "URL", getUserProperties("URL")
-		
-		
-		'Here will add Parameter for Mobil (Android and IOS)
-		DataTable.GlobalSheet.AddParameter "OSType", getConfigProperties("OSType")
-		DataTable.GlobalSheet.AddParameter "DeviceID", getConfigProperties("DeviceID")
-		DataTable.GlobalSheet.AddParameter "Identifier", getConfigProperties("Identifier")
-		DataTable.GlobalSheet.AddParameter "Instrumented", getConfigProperties("Instrumented")
-
-
+	
 
 
 End Function
