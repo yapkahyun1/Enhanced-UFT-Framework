@@ -16,17 +16,18 @@ End Function
 
 
 
+
+
+
 Function GetProjPath()
 
-Dim filePath, getProjPathPos, ActProjectPath
-filePath = Environment.Value("TestDir")
-getProjPathPos = Instr(filePath, "\TestScript")
-ActProjectPath = Left(filePath, getProjPathPos)
-
-
-GetProjPath = ActProjectPath
-
-
+	Dim filePath, getProjPathPos, ActProjectPath
+	filePath = Environment.Value("TestDir")
+	getProjPathPos = Instr(filePath, "\TestScript")
+	ActProjectPath = Left(filePath, getProjPathPos)
+	
+	
+	GetProjPath = ActProjectPath
 	
 End Function
 
@@ -171,8 +172,7 @@ End Function
 
 
 
-
-'*****Function Import Test Data From Excel************************
+'********************Function Import Test Data From Excel************************
 Function ImportTestDataFromExcel(ExcelTestDataFileName, ExcelTestDataSheet)
 
 	Dim configVal
@@ -248,7 +248,43 @@ End Function
 
 
 
-'-----------------------------Function Take Screenshot-----------------------------------
+'*****************************Core Functions for Web & Android & IOS Platform***************************************
+
+'Insert any functions for Web plarform here for better traceability
+
+
+Function LaunchBrowser(BrowserType, URL)
+	
+	CloseBrowser()
+	Wait 1
+	
+	'Avoid and adapt human error
+	Select Case UCase(BrowserType)
+	
+		Case "CHROME", "GOOGLE CHROME", "GOOGLE"
+			BrowserType = "chrome.exe"
+		Case "MSEDGE", "MICROSOFT EDGE", "EDGE", "MICROSOFTEDGE"
+			BrowserType = "msedge.exe"
+		Case "MOZILLA", "FIREFOX", "MOZILLAFIREFOX", "MOZILLA FIREFOX"
+			BrowserType = "firefox.exe"
+		
+	End Select
+
+
+	SystemUtil.Run BrowserType, "", "", "", 3
+	Wait 1
+	Set LaunchBrowser = Browser("CreationTime:=0")
+	Wait 1
+	LaunchBrowser.ClearCache
+	Wait 1
+	LaunchBrowser.Navigate URL
+	Wait 1
+	AIUtil.SetContext Browser("CreationTime:=0")
+	LaunchBrowser.Sync
+	wait 2
+	LaunchBrowser.Maximize
+
+End Function
 
 
 Function CloseBrowser()
@@ -258,32 +294,6 @@ Function CloseBrowser()
 	Wend
 
 End Function
-
-Function LaunchBrowser(BrowserType, URL)
-	
-	CloseBrowser()
-	Wait 1
-	SystemUtil.Run BrowserType & ".exe" ,"","","",3
-	Wait 1
-	Set LaunchBrowser = Browser("CreationTime:=0")
-	Wait 1
-	LaunchBrowser.ClearCache
-	Wait 1
-	LaunchBrowser.Navigate URL
-	Wait 1
-	AIUtil.SetContext Browser("CreationTime:=0")
-'	If AIUtil("button", "Adva nced").Exist Then
-'		AIUtil("button", "Adva nced").Click
-'		Sendkeys Browser("CreationTime:=0"), "{TAB}"
-'		Sendkeys Browser("CreationTime:=0"), "~"
-'	End If
-	LaunchBrowser.Sync
-	wait 2
-	LaunchBrowser.Maximize
-
-End Function
-
-
 
 
 
@@ -295,10 +305,15 @@ Function EndTestExecution()
 	Browser("CreationTime:=0").Close
 	Wend
 	
+	'UFT Built-in function for exiting the current running test
 	ExitTest()
 	
 	
 End Function
+
+
+
+'*****************************End Functions for Web & Android & IOS Platform***************************************
 
 
 

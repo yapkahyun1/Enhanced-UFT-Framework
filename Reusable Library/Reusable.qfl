@@ -1,88 +1,10 @@
 ﻿
-'Function LaunchAMYWeb()
-'	LaunchBrowser DataTable("BrowserType", dtGlobalSheet), DataTable("URL", dtGlobalSheet)
-'	Wait 5
-'	
-'	'Set AI Context to the Browser
-'	AIUtil.SetContext Browser("CreationTime:=0")
-'End Function
-'
-'
-
-
-Function LaunchBrowser(BrowserType, URL)
-	
-	CloseBrowser()
-	Wait 1
-	SystemUtil.Run BrowserType & ".exe" ,"","","",3
-	Wait 1
-	Set LaunchBrowser = Browser("CreationTime:=0")
-	Wait 1
-	LaunchBrowser.ClearCache
-	Wait 1
-	LaunchBrowser.Navigate URL
-	Wait 1
-	AIUtil.SetContext Browser("CreationTime:=0")
-'	If AIUtil("button", "Adva nced").Exist Then
-'		AIUtil("button", "Adva nced").Click
-'		Sendkeys Browser("CreationTime:=0"), "{TAB}"
-'		Sendkeys Browser("CreationTime:=0"), "~"
-'	End If
-	LaunchBrowser.Sync
-	wait 2
-	LaunchBrowser.Maximize
-
-End Function
-
-
 Function LaunchAOSWeb()
 	LaunchBrowser DataTable("BrowserType", dtGlobalSheet), DataTable("URL", dtGlobalSheet)
 	Wait 5
 	
 	'Set AI Context to the Browser
 	AIUtil.SetContext Browser("CreationTime:=0")
-End Function
-
-
-
-Function LoginAMY(UserID, Password)
-		
-	LaunchAMYWeb()
-	
-	Set AmOnlineBrowser = Browser("title:=AmOnline")
-	Set AmOnlinePage = AmOnlineBrowser.Page("title:=AmOnline")
-	Environment.Value("CurrActiveScreen") = "AmOnline"
-	'Click Transfer Money Icon
-	Call ExecuteTestSteps(AmOnlinePage.WebEdit("xpath:=//INPUT[@id='login-username-inputFields-username-input']"), "set", "Step 1: Set Username", UserID, 1)
-	
-	wait 1
-	
-	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Log In Now']"), "click", "Step 2: Click Login Now Button", "", 1)
-	
-	'AmOnlinePage.WebElement("xpath:=//p[text()='Log In Now']").Click
-	
-	wait 1
-	
-	'
-	'Reporter.ReportHtmlEvent micPass, "Step 1: Click Login button", "Step Passed", TakeScreenshot()
-	'
-	'
-	'
-	wait 1
-	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Yes']"), "click", "Step 3: Click Yes Button", "", 1)
-	wait 1
-	wait 1
-	
-	
-	Call ExecuteTestSteps(AmOnlinePage.WebEdit("xpath:=//Input[@id='login-password-inputFields-password-input']"), "set", "Step 4: Set Password", Password, 1)
-	wait 1
-	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Log In']"), "click", "Step 5: Click Login Button", "", 1)
-	
-	
-	
-	
-		
-	
 End Function
 
 
@@ -305,13 +227,6 @@ Function LaunchAOSMobile()
 End Function
 
 
-Function CloseBrowser()
-	Reporter.Filter = rfDisableAll
-	While Browser("CreationTime:=0").Exist(0)   
-	Browser("CreationTime:=0").Close
-	Wend
-
-End Function
 
 
 
@@ -358,3 +273,57 @@ Function AOSMobileLoginIOS()
 	
 End Function
 
+
+
+
+
+
+
+
+'-----------------Function for KIV (Review Back Later)----------------------------------
+
+
+
+
+'*****************Unusable Function***********************
+
+'Function LoginAMY(UserID, Password)
+'		
+'	LaunchAMYWeb()
+'	
+'	Set AmOnlineBrowser = Browser("title:=AmOnline")
+'	Set AmOnlinePage = AmOnlineBrowser.Page("title:=AmOnline")
+'	Environment.Value("CurrActiveScreen") = "AmOnline"
+'	'Click Transfer Money Icon
+'	Call ExecuteTestSteps(AmOnlinePage.WebEdit("xpath:=//INPUT[@id='login-username-inputFields-username-input']"), "set", "Step 1: Set Username", UserID, 1)
+'	
+'	wait 1
+'	
+'	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Log In Now']"), "click", "Step 2: Click Login Now Button", "", 1)
+'	
+'	'AmOnlinePage.WebElement("xpath:=//p[text()='Log In Now']").Click
+'	
+'	wait 1
+'	
+'	'
+'	'Reporter.ReportHtmlEvent micPass, "Step 1: Click Login button", "Step Passed", TakeScreenshot()
+'	'
+'	'
+'	'
+'	wait 1
+'	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Yes']"), "click", "Step 3: Click Yes Button", "", 1)
+'	wait 1
+'	wait 1
+'	
+'	
+'	Call ExecuteTestSteps(AmOnlinePage.WebEdit("xpath:=//Input[@id='login-password-inputFields-password-input']"), "set", "Step 4: Set Password", Password, 1)
+'	wait 1
+'	Call ExecuteTestSteps(AmOnlinePage.WebElement("xpath:=//p[text()='Log In']"), "click", "Step 5: Click Login Button", "", 1)
+'End Function
+
+
+
+
+
+
+'-----------------Function for KIV (Review Back Later)----------------------------------

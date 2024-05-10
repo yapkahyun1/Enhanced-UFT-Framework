@@ -1,5 +1,5 @@
 URL=https://advantageonlineshopping.com/#/
-Browser=Chrome
+Browser=Microsoftedge
 
 
 #Account Credential
