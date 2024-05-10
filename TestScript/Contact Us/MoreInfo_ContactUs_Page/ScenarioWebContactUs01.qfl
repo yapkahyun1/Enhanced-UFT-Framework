@@ -22,7 +22,8 @@ Function NavigateContactUs()
 	Call ExecuteTestSteps(AOSPage.WebEdit("name:=emailContactUs"), "set", "Step 4: Insert Email", DataTable("Email", dtGlobalSheet), 1)
 	Call ExecuteTestSteps(AOSPage.WebEdit("name:=subjectTextareaContactUs"), "set", "Step 5: Insert Subject", DataTable("Subject", dtGlobalSheet), 1)
 	Call ExecuteTestSteps(AOSPage.WebElement("html id:=send_btn"), "click", "Step 6: Click Send Button", "", 1)
-	WaitObject AOSPage.WebElement("xpath:=//p[text()='Thank you for contacting Advantage support.']"), "visible", "True", 8
+	
+	WaitObject AOSPage.WebElement("xpath:=//p[text()='Thank you for contacting Advantage support.']"), 10
 	Call VerifyText(AOSPage.WebElement("xpath:=//p[text()='Thank you for contacting Advantage support.']"), "Thank you for contacting Advantage support.", 1, "Step 7: Verify Inquiries Sent")
 	
 

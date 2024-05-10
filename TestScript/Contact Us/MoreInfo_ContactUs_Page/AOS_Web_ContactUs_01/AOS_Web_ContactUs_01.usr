@@ -35,14 +35,23 @@ ProductName=Micro Focus UFT One
 Version=2021
 
 [TulipAddins]
+ActiveX=
 AI=
 Database=
 File Content=
 Insight=
+Java=
 Mobile=
+SAP NWBC Desktop=
+SAP=
+Silverlight=
 Windows Applications=
 TEA=
+UI Automation=
+UIA Pro=
 Web=
+.NET=
+WPF=
 XML=
 
 [ExtraFiles]

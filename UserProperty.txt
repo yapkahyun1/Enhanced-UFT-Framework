@@ -1,5 +1,6 @@
+#Web Automation Configuration
 URL=https://advantageonlineshopping.com/#/
-Browser=Microsoftedge
+Browser=Google
 
 
 #Account Credential
@@ -13,3 +14,6 @@ Password=zaq123
 
 
 
+
+#Window Application Configuration
+WinAppName=Appium Inspector
