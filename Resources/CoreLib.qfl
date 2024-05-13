@@ -37,10 +37,7 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 	
 	ScreenshotPath = TakeScreenshot()
 	
-		
 
-	
-	
 	Select Case UCase(action)	
 		Case "CLICK"
 			
