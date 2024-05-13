@@ -1,0 +1,28 @@
+﻿Function SelectDestination()
+	
+
+	Set FlightGUIWindows = WpfWindow("devname:=Micro Focus MyFlight Sample Application")
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfEdit("devname:=agentName"), "Set", "Step 1: Input Username", DataTable("Username", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfEdit("devname:=password"), "Set", "Step 2: Input Password", DataTable("Password", dtGlobalSheet), 1)
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfButton("name:=OK"), "Click", "Step 3: Click OK Button", "", 1)
+	
+	WaitObject FlightGUIWindows.WpfObject("name:="& DataTable("Name", dtGlobalSheet) &""), 10
+	
+	VerifyText FlightGUIWindows.WpfObject("name:="& DataTable("Name", dtGlobalSheet) &""), DataTable("Name", dtGlobalSheet), 1, "Step 4: Verify Logged In Users"
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfComboBox("devname:=fromCity"), "Select", "Step 5: Select Paris", "Paris", 1)
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfComboBox("devname:=toCity"), "Select", "Step 6: Select London", "London", 1)
+	
+	Call ExecuteTestSteps(FlightGUIWindows.WpfButton("devname:=FIND FLIGHTS"), "Click", "Step 7: Click Find Flights Button", "", 1)
+	WaitObject FlightGUIWindows.WpfObject("devname:=Price"), 10
+	VerifyText FlightGUIWindows.WpfObject("devname:=Price"), "Price", 1, "Step 8: Verify Price Table"
+
+
+End Function
+
+
+

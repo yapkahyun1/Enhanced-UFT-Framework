@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="Step">
+<Data>
+    <Name>LoadFunctionLibrary</Name>
+    <Description>LoadFunctionLibrary function passed</Description>
+    <StartTime>2024-05-13 15:29:28</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>d84f3e40ec184ecfb28d852bf9aecc17</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Snapshot reference="Resources\Snapshots\a41eed3d-87db-4744-939b-99cba8d72d8c.jpeg" />
+    <DeviceInfo />
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Input Username</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:33</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\5fc431bf-6a19-4fdb-ab5f-2d96b665a901.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Input Password</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:33</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\0cd9c839-2cfe-4ddc-96a7-efad0abaae9a.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Click OK Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:34</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\5f9b84a0-856e-4daf-b259-96bdfc29a616.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 4: Verify Logged In Users</Name>
+    <Description>Expected Result:John Smith
+Actual Result: John Smith</Description>
+    <StartTime>2024-05-13 15:29:34</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\27b5feae-1eba-4a6b-a46e-b279828b6a79.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <IsPlainTextStepInfo>True</IsPlainTextStepInfo>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>[ fromCity ].Select</Name>
+    <Description>"Paris"</Description>
+    <StartTime>2024-05-13 15:29:35</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <TestObject>
+        <Repository>Local</Repository>
+        <Path>
+          <Object>
+            <Type>WpfWindow</Type>
+            <Name><![CDATA[[ Micro Focus MyFlight Sample Application ]]]></Name>
+          </Object>
+          <Object>
+            <Type>WpfComboBox</Type>
+            <Name><![CDATA[[ fromCity ]]]></Name>
+          </Object>
+        </Path>
+        <Operation>Select</Operation>
+        <OperationData><![CDATA["Paris"]]></OperationData>
+      </TestObject>
+      <IconKey>cebc9065a0604d3a9d558a5e485a173a</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Snapshot reference="Resources\Snapshots\34ca9e4b-8bc0-495e-8d88-a79b0cdb6ae8.jpeg" highlight="28,97,260,34" />
+    <DeviceInfo />
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 5: Select Paris</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:35</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\f4c87274-eff4-4fdc-a717-e047b29f4c44.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 6: Select London</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:36</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\4868f2fe-8956-4c7d-b4fe-46c16b13a5ed.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 7: Click Find Flights Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-13 15:29:37</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\8c229576-a435-4d62-97f5-43966f0253a6.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 8: Verify Price Table</Name>
+    <Description>Expected Result:Price
+Actual Result: Price</Description>
+    <StartTime>2024-05-13 15:29:37</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\433f49be-e46d-4e55-8d91-947468436ffc.png</StepCustomImagePath>
+      <IconKey>1437796a13174084b10c42fa2309707e</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <IsPlainTextStepInfo>True</IsPlainTextStepInfo>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-05-13 15:29:28</StartTime>
+    <Duration>9</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>a935bad4a7d8428690daf4608ce4862b</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-05-13 15:29:27</StartTime>
+    <Duration>10</Duration>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>58c9838151d4472c9011f43017a3c18e</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Test1Flight</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-05-13 15:29:26</StartTime>
+    <Duration>11</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>702a2e44200f44bc824043e29e294325</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Test1Flight</ResultName>
+    <RunStartTime>2024-05-13 15:29:26</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>

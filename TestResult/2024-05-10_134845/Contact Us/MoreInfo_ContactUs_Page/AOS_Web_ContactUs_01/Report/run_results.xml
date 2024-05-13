@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Iteration">
+<ReportNode type="Action">
+<ReportNode type="User">
+<Data>
+    <Name>Step 1: Click Contact Us Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:51</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\299062da-88e1-47c0-8c0f-427cf657bdc4.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 2: Select Category</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:55</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\355c9d17-5de6-4ebe-9433-9923aaad8d7e.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 3: Select Product</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:57</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\6f413ca2-bce3-419c-968e-75939dffef76.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 4: Insert Email</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:57</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\36a45b6c-72cb-450f-b1c9-35c1f75f2743.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 5: Insert Subject</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:57</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\d0c8c71e-7d47-4599-8812-8f539c8dbf3f.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<ReportNode type="User">
+<Data>
+    <Name>Step 6: Click Send Button</Name>
+    <Description>Step Passed</Description>
+    <StartTime>2024-05-10 13:50:57</StartTime>
+    <Result>Passed</Result>
+    <Extension>
+      <StepCustomImagePath>Resources\User\5c6a26ce-9217-4661-86b7-9488ecced73c.png</StepCustomImagePath>
+      <IconKey>f1315f8c15154e0fbcc6332e8ca170a7</IconKey>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2024-05-10 13:50:29</StartTime>
+    <Duration>29</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>2d808c97372d478b96557ade3c0b9402</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action0</Name>
+    <Description />
+    <StartTime>2024-05-10 13:50:29</StartTime>
+    <Duration>29</Duration>
+    <Result>Passed</Result>
+    <Extension>
+      <IconKey>cc81ce18c52f4e38ac5ec7a2d42760ee</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Index>1</Index>
+    <TestedApplications />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>AOS_Web_ContactUs_01</Name>
+    <ToolName>Micro Focus UFT One</ToolName>
+    <ToolVersion>2021</ToolVersion>
+    <ToolVersionStringLiteral>2021</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2024-05-10 13:50:29</StartTime>
+    <Duration>29</Duration>
+    <Result>Passed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>7bd3b21ac0324a5ca8eac683d3836b32</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>+08:00:00</Timezone>
+      <Locale>English (Malaysia)</Locale>
+      <User>HP</User>
+      <CpuInfo>11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz</CpuInfo>
+      <NumberOfCores>8</NumberOfCores>
+      <TotalMemory>20123</TotalMemory>
+      <HostName>LAPTOP-HRTBM8OC</HostName>
+      <OSInfo>Windows 11 23H2 (x64)</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>AOS_Web_ContactUs_01</ResultName>
+    <RunStartTime>2024-05-10 13:50:29</RunStartTime>
+    <Timezone>+08:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus UFT One</OrchestrationToolName>
+    <OrchestrationToolVersion>2021</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>2021</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>
