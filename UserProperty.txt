@@ -13,7 +13,3 @@ Username=pepsi10
 Password=zaq123
 
 
-
-
-#Window Application Configuration
-WinAppName=Appium Inspector

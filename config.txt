@@ -8,3 +8,5 @@ Identifier=com.mf.iShopping
 Instrumented=False
 
 
+#Window Application Configuration
+WinAppLocation=C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe

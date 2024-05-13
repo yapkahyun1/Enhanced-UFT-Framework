@@ -37,6 +37,10 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 	
 	ScreenshotPath = TakeScreenshot()
 	
+		
+
+	
+	
 	Select Case UCase(action)	
 		Case "CLICK"
 			
@@ -52,6 +56,7 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
             		ObjElement.Select TestData	
 		
 	End Select
+	
 	
 	Reporter.Filter = rfEnableAll
 	
@@ -354,26 +359,24 @@ Function LaunchWinApp()
 	
 	CloseWinApp()
 	
-	
-	WinAppName = getUserProperties("WinAppName") & ".exe"
-	
-	Set FileObj = CreateObject("Scripting.FileSystemObject")
-	
-	WinAppPath = FileObj.GetAbsolutePathName(WinAppName)
-	
-	SystemUtil.Run WinAppPath
+	Wait 1
+
+	SystemUtil.Run getConfigProperties("WinAppLocation")
+
 	
 End Function
 
 
 
 Function CloseWinApp()
-	
+		
+	Dim WinAppLocation
 	Reporter.Filter = rfDisableAll
-	WinAppName = getUserProperties("WinAppName") & ".exe"
+	WinAppLocation = getConfigProperties("WinAppLocation")
+	SplitAppPath = Split(WinAppLocation, "\")
+	WinAppName = CStr(SplitAppPath(UBound(SplitAppPath)))
 	SystemUtil.CloseProcessByName(WinAppName)
-	
-	
+
 End Function
 
 
