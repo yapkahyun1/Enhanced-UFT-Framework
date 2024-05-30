@@ -22,6 +22,7 @@
 	VerifyText FlightGUIWindows.WpfObject("devname:=Price"), "Price", 1, "Step 8: Verify Price Table"
 
 
+
 End Function
 
 
