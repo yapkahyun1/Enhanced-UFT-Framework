@@ -452,6 +452,31 @@ Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
 End Function
 
 
+
+Function VerifyTextContains(objectText, expected, ScreenCaptureOn, stepName)
+	'If object.Exist Then
+		'object.Click
+	'End If
+	objectText = trim(object.GetROProperty("innertext"))
+	
+	strTakeScreenshot = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	If Instr(objectText, expected) > 0 Then
+		If ScreenCaptureOn=1 Then
+			
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText, strTakeScreenshot
+			Else
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText
+		End If
+
+	Else
+		Reporter.ReportEvent micFail, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " &  objectText, strTakeScreenshot
+	End If
+
+	objectText = ""
+End Function
+
+
 Function VerifyTextIOS(actualObject, expect, ScreenCaptureOn, stepName)
 
 
