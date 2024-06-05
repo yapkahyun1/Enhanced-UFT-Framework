@@ -523,13 +523,14 @@ Function SimulateMouseClick(ObjElement, TypeMouseClick)
 	YCoor = ObjElement.GetROProperty("abs_y")
 	
 	Select Case UCase(TypeMouseClick)
-	
+		
+		'Perform Left Click
 		Case "LEFT", "LEFT_MOUSE_BUTTON", "LEFT_BUTTON", "LEFT_CLICK", "LEFT", "LEFT MOUSE BUTTON", "LEFT BUTTON", "LEFT CLICK", "CLICK"
 			MercuryObj.MouseClick XCoor, YCoor, 0
-				
+		'Perform Middle Click
 		Case "MIDDLE", "MIDDLE_MOUSE_BUTTON", "MIDDLE_BUTTON", "MIDDLE_CLICK", "MIDDLE", "MIDDLE MOUSE BUTTON", "MIDDLE BUTTON", "MIDDLE CLICK"
 			MercuryObj.MouseClick XCoor, YCoor, 1
-			
+		'Perform Right Click
 		Case "RIGHT", "RIGHT_MOUSE_BUTTON", "RIGHT_BUTTON", "RIGHT_CLICK", "RIGHT", "RIGHT MOUSE BUTTON", "RIGHT BUTTON", "RIGHT CLICK"
 			MercuryObj.MouseClick XCoor, YCoor, 2
 	End Select
@@ -537,6 +538,52 @@ Function SimulateMouseClick(ObjElement, TypeMouseClick)
 	Set MercuryObj = Nothing
 	
 End Function
+
+
+
+Function GenerateRndAmount(NumRange)
+	Dim MaxNum, MinNum, DelimeterList, SplitNumRange, RndVal
+	
+	'Array list to keep characters that can be found in the argument
+	'Update here if there is additional character to make it more flexible
+	DelimeterList = Array("-", "::", "->", "-->")
+	
+	'Loop the Array list
+	For i = LBound(DelimeterList) To UBound(DelimeterList)
+		'Check if argument/value provided has any character that matches it in the array list
+		If Instr(NumRange, DelimeterList(i)) > 0 Then
+			'Split the argument/value based on the characters found into array
+			SplitNumRange = Split(NumRange, DelimeterList(i))
+			'first index is for Minimum Number
+			MinNum = Trim(SplitNumRange(0))
+			'second index is for Maximum Number
+			MaxNum = Trim(SplitNumRange(1))
+			'The "Randomize" statement is needed to initliaze the random number generator so that it can generate different and randomize number each execution
+			Randomize
+			'(MaxNum - MinNum + 1) is to check the size of the range and ensuring the maximum number is inclusive for randomize
+			'The "Rnd" keyword will randomize values like this 0.24123218
+			'Once "Rnd" keyword generate the value and it will plus the MinNum val to ensure it is within the minimum range
+			'To ensure that numbers always generated within the range of MinNum to MaxNum need to add MinNum after Rnd keyword
+			'Example if without adding MinNum
+			'Rnd = 6 * 0.0 = 0.0
+			'The example above is invalid because we specify to generate within the range of 1 to 6
+			RndVal = FormatCurrency((MaxNum - MinNum + 1) * Rnd + MinNum, 2)
+			GenerateRndAmount = Replace(RndVal, "RM", "")
+			
+			
+		End If
+		
+	Next
+	
+
+End Function
+
+
+Function TestRnd()
+	
+	
+End Function
+
 
 
 'Function for simulating keyboard inputs, can input more
