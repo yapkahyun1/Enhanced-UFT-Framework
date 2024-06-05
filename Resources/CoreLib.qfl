@@ -422,7 +422,7 @@ End Function
 
 
 
-'********************Verification Function Section****************************
+'********************Verification Function Section For Web & Android & IOS Platform****************************
 
 
 
@@ -500,6 +500,68 @@ Function VerifyTextIOS(actualObject, expect, ScreenCaptureOn, stepName)
 
 	objectText = ""
 End Function
+
+
+
+
+
+'*****************************End Verification Functions for Web & Android & IOS Platform***************************************
+
+
+
+
+
+'******************** For Web & Android & IOS Platform****************************
+
+
+
+Function SimulateMouseClick(ObjElement, TypeMouseClick)
+
+	Set MercuryObj = CreateObject("Mercury.DeviceReplay")
+	
+	XCoor = ObjElement.GetROProperty("abs_x")
+	YCoor = ObjElement.GetROProperty("abs_y")
+	
+	Select Case UCase(TypeMouseClick)
+	
+		Case "LEFT", "LEFT_MOUSE_BUTTON", "LEFT_BUTTON", "LEFT_CLICK", "LEFT", "LEFT MOUSE BUTTON", "LEFT BUTTON", "LEFT CLICK", "CLICK"
+			MercuryObj.MouseClick XCoor, YCoor, 0
+				
+		Case "MIDDLE", "MIDDLE_MOUSE_BUTTON", "MIDDLE_BUTTON", "MIDDLE_CLICK", "MIDDLE", "MIDDLE MOUSE BUTTON", "MIDDLE BUTTON", "MIDDLE CLICK"
+			MercuryObj.MouseClick XCoor, YCoor, 1
+			
+		Case "RIGHT", "RIGHT_MOUSE_BUTTON", "RIGHT_BUTTON", "RIGHT_CLICK", "RIGHT", "RIGHT MOUSE BUTTON", "RIGHT BUTTON", "RIGHT CLICK"
+			MercuryObj.MouseClick XCoor, YCoor, 2
+	End Select
+	
+	Set MercuryObj = Nothing
+	
+End Function
+
+
+'Function for simulating keyboard inputs, can input more
+Function SendKeys(Keyword)
+	Set WsShell = CreateObject("WScript.Shell")
+
+	
+	Select Case UCase(Keyword)
+		Case "BACKSPACE", "Backspace"
+			WsShell.SendKeys "{BACKSPACE}"
+		Case "PAGE_UP", "PAGE UP", "PAGEUP","UP"
+			WsShell.SendKeys "{PGUP}"
+		Case "PAGE_DOWN", "PAGE DOWN", "PAGEDOWN","DOWN"
+			WsShell.SendKeys "{PGDN}"
+			
+	End Select
+	wait 1
+	Set WsShell = Nothing
+
+End Function
+
+
+
+
+
 
 
 Function ScrollWeb(PageObj)
