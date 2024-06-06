@@ -69,6 +69,7 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed", ScreenshotPath
 			Else
 				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed"
+
 		End If
 		
 		
@@ -541,48 +542,41 @@ End Function
 
 
 
+
 Function GenerateRndAmount(NumRange)
-	Dim MaxNum, MinNum, DelimeterList, SplitNumRange, RndVal
 	
-	'Array list to keep characters that can be found in the argument
-	'Update here if there is additional character to make it more flexible
-	DelimeterList = Array("-", "::", "->", "-->")
+	Dim RegEx, ReplacedVal, SplitNumRange, MaxNum, MinNum, RndVal
 	
-	'Loop the Array list
-	For i = LBound(DelimeterList) To UBound(DelimeterList)
-		'Check if argument/value provided has any character that matches it in the array list
-		If Instr(NumRange, DelimeterList(i)) > 0 Then
-			'Split the argument/value based on the characters found into array
-			SplitNumRange = Split(NumRange, DelimeterList(i))
-			'first index is for Minimum Number
-			MinNum = Trim(SplitNumRange(0))
-			'second index is for Maximum Number
-			MaxNum = Trim(SplitNumRange(1))
-			'The "Randomize" statement is needed to initliaze the random number generator so that it can generate different and randomize number each execution
-			Randomize
-			'(MaxNum - MinNum + 1) is to check the size of the range and ensuring the maximum number is inclusive for randomize
-			'The "Rnd" keyword will randomize values like this 0.24123218
-			'Once "Rnd" keyword generate the value and it will plus the MinNum val to ensure it is within the minimum range
-			'To ensure that numbers always generated within the range of MinNum to MaxNum need to add MinNum after Rnd keyword
-			'Example if without adding MinNum
-			'Rnd = 6 * 0.0 = 0.0
-			'The example above is invalid because we specify to generate within the range of 1 to 6
-			RndVal = FormatCurrency((MaxNum - MinNum + 1) * Rnd + MinNum, 2)
-			GenerateRndAmount = Replace(RndVal, "RM", "")
-			
-			
-		End If
-		
-	Next
-	
-
-End Function
-
-
-Function TestRnd()
-	
+	'Initialize the regEx object
+	Set regEx = New RegExp 
+	'Set the regEx to identify non-digit character with one or more occurences
+	'Able to use (\D) but when it comes to replace the delimeter it will not be flexible because if the delimeter is "-->" it will only be replaced to become like this ":->" 
+	'Reasons being: the regEx pattern we did not specify how many non digit character we are trying to replace, to make it flexible we use the pattern below
+	regEx.Pattern = "(\D+)"
+	'Once delimeter has been identified, the NumRange delimeter will be replaced with another delimeter "::"
+	'Reasons being: To make the delimeter splitting between two numbers more flexible as users can use all sorts of symbol to split the number to their own preferences	
+	ReplacedVal = regEx.Replace(NumRange, "::")
+	'Once delimeter has been replaced, it will be split into array based on the delimeter "::" and trim any blank spaces in the value
+	SplitNumRange = Split(Trim(ReplacedVal), "::")
+	'Second index is Maximum Number
+	MaxNum = SplitNumRange(1)
+	'First Index is Minimum Number
+	MinNum = SplitNumRange(0)
+	'The "Randomize" statement is needed to initliaze the random number generator so that it can generate different and randomize number each execution
+	Randomize
+	'(MaxNum - MinNum + 1) is to check the size of the range and ensuring the maximum number is inclusive for randomize
+	'The "Rnd" keyword will randomize values like this 0.24123218
+	'Once "Rnd" keyword generate the value and it will plus the MinNum val to ensure it is within the minimum range
+	'To ensure that numbers always generated within the range of MinNum to MaxNum need to add MinNum after Rnd keyword
+	'Example if without adding MinNum
+	'Rnd = 6 * 0.0 = 0.0
+	'The example above is invalid because we specify to generate within the range of 1 to 6
+	RndVal = FormatCurrency((MaxNum - MinNum + 1) * Rnd + MinNum, 2)
+	GenerateRndAmount = Trim(Replace(RndVal, "RM", ""))
 	
 End Function
+
+
 
 
 
