@@ -66,9 +66,9 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 		EndTestExecution()
 	Else
 		If ScreenCaptureOn = 1 Then
-				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed", ScreenshotPath
+				Reporter.ReportHtmlEvent micPass, stepName, TestData, ScreenshotPath
 			Else
-				Reporter.ReportHtmlEvent micPass, stepName, "Step Passed"
+				Reporter.ReportHtmlEvent micPass, stepName, TestData
 
 		End If
 		
@@ -651,16 +651,29 @@ Function SendKeys(Keyword)
 End Function
 
 
+Function ScrollIntoView(PageObj, WebObj)
+	Reporter.Filter = rfDisableAll
 
 
+	Dim JavaScriptCmd
+	'Char(34) is ASCII for double quote "", to run the script the javascript command or code needed to be in string and the syntax to run the javascript is clashing with vbscript syntax.
+	'To avoid this issue, use Char(34) to input the double quotes during runtime so that when executing the javascript it can execute with correct syntax 
+	JavaScriptCmd = "window.document.evaluate(" & Chr(34) & ""&WebObj&"" & Chr(34) & ", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'nearest' });"
+
+	'Variable "PageObj" is needed due to RunScript method is tied or related to Page Class objects
+	PageObj.RunScript(JavaScriptCmd)
+	
+	Wait 0.5
+End Function
 
 
-
-Function ScrollWeb(PageObj)
+Function ScrollBy(PageObj)
 	wait 3
 	Reporter.Filter = rfDisableAll
 	
-	PageObj.RunScript("window.scrollBy(0,900)")
+	PageObj.RunScript("window.scrollBy("&Val&",900)")
+	
+	
 	
 End Function
 
