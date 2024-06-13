@@ -29,7 +29,8 @@ Function GetProjPath()
 End Function
 
 
-Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureOn)
+
+Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureOn)
 	Dim ScreenshotPath
 	
 	On Error Resume Next
@@ -77,6 +78,19 @@ Function ExecuteTestSteps(ObjElement, action, stepName, TestData, ScreenCaptureO
 	
 	Reporter.Filter = rfDisableAll
 
+End Function
+
+
+
+Function JavaScriptClick(WebObj)
+
+	Dim JavaScrpCmd 
+	
+	JavaScrpCmd = "window.document.evaluate(" & Chr(34) & ""&WebObj&"" & Chr(34) & ", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();"
+	
+	
+	window.document.evaluate("xpath:=//button[@id='see_offer_btn']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
+	
 End Function
 
 
@@ -431,7 +445,7 @@ End Function
 Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
 
 
-	objectText = trim(actualObject.GetROProperty("text"))
+	objectText = trim(actualObject.GetROProperty("innertext"))
 
 	
 	ScreenshotPath = TakeScreenshot()
@@ -454,11 +468,12 @@ End Function
 
 
 
-Function VerifyTextContains(objectText, expected, ScreenCaptureOn, stepName)
+Function VerifyTextContains(actualObject, expected, ScreenCaptureOn, stepName)
 	'If object.Exist Then
 		'object.Click
 	'End If
-	objectText = trim(object.GetROProperty("innertext"))
+	Dim objectText
+	objectText = trim(actualObject.GetROProperty("innertext"))
 	
 	strTakeScreenshot = TakeScreenshot()
 	Reporter.Filter = rfEnableAll

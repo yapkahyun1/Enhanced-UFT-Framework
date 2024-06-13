@@ -31,11 +31,11 @@ Default Profile=default.usp
 Lang=none
 
 [TulipInfo]
-ProductName=Micro Focus UFT One
-Version=2021
+ProductName=OpenText UFT One
+Version=24.2
 
 [TulipAddins]
-ActiveX=
+AF=
 AI=
 Database=
 File Content=
