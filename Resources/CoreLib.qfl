@@ -81,7 +81,7 @@ Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureO
 End Function
 
 
-
+'functio not finished ---> WIP
 Function JavaScriptClick(WebObj)
 
 	Dim JavaScrpCmd 
@@ -465,6 +465,7 @@ Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
 
 	objectText = ""
 End Function
+
 
 
 
