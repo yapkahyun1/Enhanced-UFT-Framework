@@ -1,0 +1,10 @@
+﻿
+Function ScrollIOS()
+	wait 3
+	Reporter.Filter = rfDisableAll
+	
+	AIUtil.Scroll "down", 2
+	
+End Function
+
+
