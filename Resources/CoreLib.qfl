@@ -503,30 +503,6 @@ End Function
 
 
 
-Function SimulateMouseClick(ObjElement, TypeMouseClick)
-
-	Set MercuryObj = CreateObject("Mercury.DeviceReplay")
-	
-	XCoor = ObjElement.GetROProperty("abs_x")
-	YCoor = ObjElement.GetROProperty("abs_y")
-	
-	Select Case UCase(TypeMouseClick)
-		
-		'Perform Left Click
-		Case "LEFT", "LEFT_MOUSE_BUTTON", "LEFT_BUTTON", "LEFT_CLICK", "LEFT", "LEFT MOUSE BUTTON", "LEFT BUTTON", "LEFT CLICK", "CLICK"
-			MercuryObj.MouseClick XCoor, YCoor, 0
-		'Perform Middle Click
-		Case "MIDDLE", "MIDDLE_MOUSE_BUTTON", "MIDDLE_BUTTON", "MIDDLE_CLICK", "MIDDLE", "MIDDLE MOUSE BUTTON", "MIDDLE BUTTON", "MIDDLE CLICK"
-			MercuryObj.MouseClick XCoor, YCoor, 1
-		'Perform Right Click
-		Case "RIGHT", "RIGHT_MOUSE_BUTTON", "RIGHT_BUTTON", "RIGHT_CLICK", "RIGHT", "RIGHT MOUSE BUTTON", "RIGHT BUTTON", "RIGHT CLICK"
-			MercuryObj.MouseClick XCoor, YCoor, 2
-	End Select
-	
-	Set MercuryObj = Nothing
-	
-End Function
-
 
 
 Function GenerateRndText(TypeOfChar, LetterCase, TextRange)
@@ -621,38 +597,11 @@ End Function
 
 
 
-'Function for simulating keyboard inputs, can input more
-Function SendKeys(Keyword)
-	Set WsShell = CreateObject("WScript.Shell")
-
-	
-	Select Case UCase(Keyword)
-		Case "BACKSPACE", "Backspace"
-			WsShell.SendKeys "{BACKSPACE}"
-		Case "PAGE_UP", "PAGE UP", "PAGEUP","UP"
-			WsShell.SendKeys "{PGUP}"
-		Case "PAGE_DOWN", "PAGE DOWN", "PAGEDOWN","DOWN"
-			WsShell.SendKeys "{PGDN}"
-			
-	End Select
-	wait 1
-	Set WsShell = Nothing
-
-End Function
 
 
 
 
 
-Function ScrollBy(PageObj)
-	wait 3
-	Reporter.Filter = rfDisableAll
-	
-	PageObj.RunScript("window.scrollBy("&Val&",900)")
-	
-	
-	
-End Function
 
 
 
