@@ -1,5 +1,5 @@
 #Web Automation Configuration
-URL=https://advantageonlineshopping.com/#/
+URL=https://10.2.100.187/personal/login/login.do
 Browser=Google
 
 
@@ -9,7 +9,6 @@ AccountNumber=8881048415068
 
 
 #User ID
-Username=pepsi10
-Password=zaq123
+
 
 

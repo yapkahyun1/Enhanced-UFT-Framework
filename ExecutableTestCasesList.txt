@@ -1,1 +1,1 @@
-Purchase,Purchase_New_Items,AOS_IOS_PurchaseItem_01,Account,Register_New_Account,AOS_IOS_Register_01,
+Contact Us,MoreInfo_ContactUs_Page,AOS_Web_ContactUs_01,

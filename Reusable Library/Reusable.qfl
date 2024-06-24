@@ -8,6 +8,20 @@ Function LaunchAOSWeb()
 End Function
 
 
+'Later Delete this
+Function LaunchIRakyatPortal()
+	
+	LaunchBrowser DataTable("BrowserType", dtGlobalSheet), DataTable("URL", dtGlobalSheet)
+	Wait 5
+	
+	'Set AI Context to the Browser
+	AIUtil.SetContext Browser("CreationTime:=0")
+	
+End Function
+
+
+
+
 Function TransferOwnAccount(AccNumber, Amount)
 	
 	Set AmOnlineBrowser = Browser("title:=AmOnline")

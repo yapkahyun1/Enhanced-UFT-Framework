@@ -36,6 +36,7 @@ Version=24.2
 
 [TulipAddins]
 AF=
+AgGrid=
 AI=
 Database=
 File Content=
@@ -45,7 +46,9 @@ Windows Applications=
 TEA=
 UI Automation=
 UIA Pro=
+UIGrid=
 Web=
+WPF=
 XML=
 
 [ExtraFiles]

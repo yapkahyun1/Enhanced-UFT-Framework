@@ -2,11 +2,11 @@
 Reporter.Filter = rfDisableAll
 
 
-LoadFunctionLibrary "C:\Users\HP\OneDrive\Desktop\UFT Framework Enhanced\Enhanced-UFT-Framework\Resources\CoreLib.qfl"
+LoadFunctionLibrary "C:\Users\HP\OneDrive\Desktop\UFT Framework Enhanced\Enhanced-UFT-Framework\Reusable Library\LoadDependencies.qfl"
 LoadDependencies "ScenarioWebContactUs01.qfl", "[Contact Us]_Web_MakePurchase.xlsx", "AOS_Web_ContactUs_01"
 
 
-LaunchAOSWeb()
+LaunchIRakyatPortal()
 
 
 ''NavigateContactUs()
@@ -16,10 +16,10 @@ LaunchAOSWeb()
 ''
 
 
-Environment.Value("CurrActiveScreen") = "Advantage Shopping"
-Set AOSBrowser = Browser("title:=Advantage Shopping")
-Set AOSPage = AOSBrowser.Page("title:=Advantage Shopping")
-wait 15
+Environment.Value("CurrActiveScreen") = "iRakyat"
+Set iRakyatBrowser = Browser("title:=iRakyat")
+Set iRakyatPage = iRakyatBrowser.Page("title:=iRakyat")
+wait 1
 
 '
 '
@@ -28,6 +28,19 @@ wait 15
 ''
 '
 ''
+
+Call ExecuteTestSteps("Login Step 1: Enter Username", iRakyatPage.WebEdit("xpath:=//INPUT[@id='username']"), "Set", "Test", 1)
+
+Call ExecuteTestSteps("Login Step 2: Click Login Button", iRakyatPage.WebButton("xpath:=//input[@value='Login']"), "Click", "", 1)
+
+WaitObject iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), 15
+
+
+
+Call ExecuteTestSteps("Login Step 3: Click Yes Button", iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), "Click", "", 1)
+
+
+
 'Call ExecuteTestSteps(AOSPage.WebElement("xpath:=//a[@id='hrefUserIcon']"), "Click", "Step 1: Click Account Icon", "Account", 1)
 'WaitObject AOSPage.WebElement("xpath:=//input[@name='username']"), 10
 'Call ExecuteTestSteps(AOSPage.WebEdit("xpath:=//input[@name='username']"), "Set", "Step 2: Set Username", DataTable("Username", dtGlobalSheet), 1)
@@ -68,10 +81,6 @@ wait 15
 '
 '
 
- 
-Call ExecuteTestSteps("Step 1: Click Account Icon", AOSPage.WebElement("xpath:=//a[@id='hrefUserIcon']"), "Click", "", 1)
-
-Print("Start")
 
 
 
@@ -83,3 +92,10 @@ Print("Start")
 'Browser("Advantage Shopping_2").Page("Advantage Shopping_Page_2").WebButton("XpathButton").Click
 
 'CloseBrowser()
+
+'JavaScriptClick AOSPage, "//span[text()='TABLETS']"
+
+
+
+
+
