@@ -4,15 +4,23 @@
 Function LoadDependencies(ScenarioFunctionLib, ExcelTestDataFileName, ExcelFileTestDataSheet)
 	
 	Reporter.Filter = rfDisableAll
+	Dim ScenarioFolderPath
 
 	'***Load 3 function library --> CoreLib, Reusable, Scenario Lib
 
 	'Get the scenario path
 	ScenarioFolderPath = Left (Environment.Value("TestDir"), Instr(Environment.Value("TestDir"), Environment.Value("TestName")) - 1)
 
-	
+
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\CoreLib.qfl"
+	'Import Web Object Func Lib
+	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\WebObjectAction.qfl"
+	'Import Android Object Func Lib
+	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\AndroidObjectAction.qfl"
+	'Import IOS Object Func Lib
+	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\IOSObjectAction.qfl"
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Reusable Library\Reusable.qfl"
+
 	LoadFunctionLibrary ScenarioFolderPath & ScenarioFunctionLib
 
 

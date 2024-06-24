@@ -21,6 +21,24 @@ End Function
 
 
 
+Function LoginiRakyat()
+	
+	
+	Call ExecuteTestSteps("Login Step 1: Enter Username", iRakyatPage.WebEdit("xpath:=//INPUT[@id='username']"), "Set", "Test", 1)
+
+	Call ExecuteTestSteps("Login Step 2: Click Login Button", iRakyatPage.WebButton("xpath:=//input[@value='Login']"), "Click", "", 1)
+	
+	WaitObject iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), 15
+
+
+
+	Call ExecuteTestSteps("Login Step 3: Click Yes Button", iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), "Click", "", 1)
+	
+	
+End Function
+
+
+
 
 Function TransferOwnAccount(AccNumber, Amount)
 	

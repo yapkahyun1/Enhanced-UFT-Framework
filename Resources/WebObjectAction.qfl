@@ -56,6 +56,17 @@ Function SendKeys(Keyword)
 End Function
 
 
+'functio not finished ---> WIP, dont use it yet
+Function JavaScriptClick(PageObj, WebObj)
+
+	Dim JavaScrpCmd 
+	
+	JavaScrpCmd = "window.document.evaluate(" & Chr(34) & ""&WebObj&"" & Chr(34) & ", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();"
+	
+	PageObj.RunScript JavaScrpCmd
+	
+	
+End Function
 
 
 

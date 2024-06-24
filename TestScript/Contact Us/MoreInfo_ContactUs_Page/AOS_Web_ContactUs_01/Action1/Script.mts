@@ -6,7 +6,7 @@ LoadFunctionLibrary "C:\Users\HP\OneDrive\Desktop\UFT Framework Enhanced\Enhance
 LoadDependencies "ScenarioWebContactUs01.qfl", "[Contact Us]_Web_MakePurchase.xlsx", "AOS_Web_ContactUs_01"
 
 
-LaunchIRakyatPortal()
+LaunchAOSWeb()
 
 
 ''NavigateContactUs()
@@ -16,28 +16,22 @@ LaunchIRakyatPortal()
 ''
 
 
-Environment.Value("CurrActiveScreen") = "iRakyat"
-Set iRakyatBrowser = Browser("title:=iRakyat")
-Set iRakyatPage = iRakyatBrowser.Page("title:=iRakyat")
-wait 1
+Environment.Value("CurrActiveScreen") = "Advantage Shopping"
+Set AOSBrowser = Browser("title:=Advantage Shopping")
+Set AOSPage = AOSBrowser.Page("title:=Advantage Shopping")
+wait 10
 
 '
 '
 'AOSPage.Sync
 'Wait 10
-''
-'
-''
 
-Call ExecuteTestSteps("Login Step 1: Enter Username", iRakyatPage.WebEdit("xpath:=//INPUT[@id='username']"), "Set", "Test", 1)
 
-Call ExecuteTestSteps("Login Step 2: Click Login Button", iRakyatPage.WebButton("xpath:=//input[@value='Login']"), "Click", "", 1)
-
-WaitObject iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), 15
+ScrollBy AOSPage, 0, 900
 
 
 
-Call ExecuteTestSteps("Login Step 3: Click Yes Button", iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), "Click", "", 1)
+
 
 
 

@@ -1,5 +1,5 @@
 #Web Automation Configuration
-URL=https://10.2.100.187/personal/login/login.do
+URL=https://advantageonlineshopping.com/#/
 Browser=Google
 
 
