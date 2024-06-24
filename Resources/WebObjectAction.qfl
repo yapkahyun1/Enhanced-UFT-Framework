@@ -14,12 +14,21 @@ End Function
 
 
 
+'Function to static scroll in web
+Function ScrollBy(PageObj, XPixel, YPixel)
 
-Function ScrollBy(PageObj)
+	'Example:
+	'PageObj.RunScript("window.scrollBy("0","900")")
+	'Example below will scroll down 900 pixels
+	'PageObj.RunScript("window.scrollBy("0","-200")")
+	'Example above will scroll up 200 pixels
+	'****Notes****
+	'Accepts negative value to scroll up
+	
 	wait 3
 	Reporter.Filter = rfDisableAll
 	
-	PageObj.RunScript("window.scrollBy("&Val&",900)")
+	PageObj.RunScript("window.scrollBy("&XPixel&","&YPixel&")")
 	
 	
 	
