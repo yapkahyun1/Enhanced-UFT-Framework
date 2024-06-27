@@ -1,1 +1,1 @@
-Contact Us,MoreInfo_ContactUs_Page,AOS_Web_ContactUs_01,
+Register,Create_New_UserProfile,AOS_Web_Register_01,Contact Us,MoreInfo_ContactUs_Page,AOS_Web_ContactUs_01,

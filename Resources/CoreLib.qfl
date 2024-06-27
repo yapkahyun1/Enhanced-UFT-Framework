@@ -1,9 +1,4 @@
-﻿'****Get the current path and navigate to the project path only to get the config and user property where it was located*****
-'Dim filePath, getProjPathPos, ActProjectPath
-'filePath = Environment.Value("TestDir")
-'getProjPathPos = Instr(filePath, "\TestScript")
-'ActProjectPath = Left(filePath, getProjPathPos)
-	
+﻿
 Function CheckIteration()
 	If InStr(UCase(DataTable("Run", dtGlobalSheet)),"Y") > 0 Then
 '		If Not InStr(UCase(DataTable("Run", dtLocalSheet)),"Y") > 0 Then
@@ -34,11 +29,7 @@ Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureO
 	Dim ScreenshotPath
 	
 	On Error Resume Next
-	
-	
 	ScreenshotPath = TakeScreenshot()
-	
-
 	Select Case UCase(action)	
 		Case "CLICK"
 			
@@ -55,7 +46,6 @@ Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureO
 		
 	End Select
 	
-	
 	Reporter.Filter = rfEnableAll
 	
 	If Err.Number <> 0 Then
@@ -63,17 +53,15 @@ Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureO
 		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
 		
 		'**On Error Resume Next** will allow the script to continue executing if there is an error until it reaches the line where it generates the failed test steps, use the line below to reset the error handling to default behavior which is vbscript to halt the execution and display the error message
-		On Error GoTo 0
+		'On Error GoTo 0
 		EndTestExecution()
 	Else
+		'If ScreenCaptureOn receives Value "1" it will capture screenshot in html report
 		If ScreenCaptureOn = 1 Then
 				Reporter.ReportHtmlEvent micPass, stepName, TestData, ScreenshotPath
 			Else
 				Reporter.ReportHtmlEvent micPass, stepName, TestData
-
 		End If
-		
-		
 	End If
 	
 	Reporter.Filter = rfDisableAll
@@ -97,12 +85,7 @@ Function getConfigProperties(configPropertiesType)
 			MsgBox "Config File Not Exist. Please check if your file exists or not", 0,"Configuration Error"
 		Else
 			Set configFile = FSO.OpenTextFile(configLocation, ForReading, False)
-		
 			Do While configFile.AtEndOfStream <> True
-				outputStr = configFile.ReadLine
-		'		SplitStr = Split(outputStr, "=")(1)
-		'		Print("Splitted Value: " & SplitStr)
-	'		
 				If Left(outputStr, Len(configPropertiesType)) = configPropertiesType Then
 					SplitStr = Split(outputStr, "=")(1)
 					Exit Do
@@ -138,10 +121,6 @@ Function getUserProperties(userPropertiesType)
 			
 			Do While configFile.AtEndOfStream <> True
 				outputStr = configFile.ReadLine
-			
-			'		SplitStr = Split(outputStr, "=")(1)
-			'		Print("Splitted Value: " & SplitStr)
-			'		
 				If Left(outputStr, Len(userPropertiesType)) = userPropertiesType Then
 					SplitStr = Split(outputStr, "=")(1)
 					Exit Do
@@ -154,10 +133,8 @@ Function getUserProperties(userPropertiesType)
 			getUserProperties = SplitStr
 			
 	End If
-	
-	
+
 	Set FSO = Nothing
-	
 
 End Function
 
@@ -196,7 +173,7 @@ Function ImportTestDataFromExcel(ExcelTestDataFileName, ExcelTestDataSheet)
 	DataTable.GlobalSheet.AddParameter "URL", getUserProperties("URL")
 	
 	
-	'Here will add Parameter for Mobile (Android and IOS)
+	'Here will add Parameter for Mobile (Android and IOS) for Mobile Automation
 	DataTable.GlobalSheet.AddParameter "OSType", getConfigProperties("OSType")
 	DataTable.GlobalSheet.AddParameter "DeviceID", getConfigProperties("DeviceID")
 	DataTable.GlobalSheet.AddParameter "Identifier", getConfigProperties("Identifier")
@@ -246,6 +223,7 @@ Function TakeScreenshot()
 	Set FSO = Nothing
 	
 	TakeScreenshot = SnapshotFolderPath & "\Screenshot_" & TimeStampNow() & ".png"
+	'Desktop as an Object to allow screen capture the whole desktop
 	Desktop.CaptureBitmap TakeScreenshot, True
 	
 End Function
@@ -396,98 +374,6 @@ End Function
 
 
 
-
-'********************Verification Function Section For Web & Android & IOS Platform****************************
-
-
-
-
-Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
-
-
-	objectText = trim(actualObject.GetROProperty("innertext"))
-
-	
-	ScreenshotPath = TakeScreenshot()
-	Reporter.Filter = rfEnableAll
-	If expect = objectText Then
-		If ScreenCaptureOn = 1 Then
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
-			Else
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
-		End If
-		
-	Else
-		Reporter.Filter = rfEnableAll
-		Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
-		EndTestExecution()
-	End If
-
-	objectText = ""
-End Function
-
-
-
-
-Function VerifyTextContains(actualObject, expected, ScreenCaptureOn, stepName)
-	'If object.Exist Then
-		'object.Click
-	'End If
-	Dim objectText
-	objectText = trim(actualObject.GetROProperty("innertext"))
-	
-	strTakeScreenshot = TakeScreenshot()
-	Reporter.Filter = rfEnableAll
-	If Instr(objectText, expected) > 0 Then
-		If ScreenCaptureOn=1 Then
-			
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText, strTakeScreenshot
-			Else
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText
-		End If
-
-	Else
-		Reporter.ReportEvent micFail, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " &  objectText, strTakeScreenshot
-	End If
-
-	objectText = ""
-End Function
-
-
-Function VerifyTextIOS(actualObject, expect, ScreenCaptureOn, stepName)
-
-
-	objectText = trim(actualObject.GetTOProperty("text"))
-
-	
-	ScreenshotPath = TakeScreenshot()
-	Reporter.Filter = rfEnableAll
-	If expect = objectText Then
-		If ScreenCaptureOn = 1 Then
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
-			Else
-				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
-		End If
-		
-	Else
-		Reporter.Filter = rfEnableAll
-		Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
-		EndTestExecution()
-	End If
-
-	objectText = ""
-End Function
-
-
-
-
-
-'*****************************End Verification Functions for Web & Android & IOS Platform***************************************
-
-
-
-
-
 '******************** For Web & Android & IOS Platform****************************
 
 
@@ -581,16 +467,5 @@ Function GenerateRndAmount(NumRange)
 	GenerateRndAmount = Trim(Replace(RndVal, "RM", ""))
 	
 End Function
-
-
-
-
-
-
-
-
-
-
-
 
 

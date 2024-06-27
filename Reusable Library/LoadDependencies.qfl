@@ -7,12 +7,14 @@ Function LoadDependencies(ScenarioFunctionLib, ExcelTestDataFileName, ExcelFileT
 	Dim ScenarioFolderPath
 
 	'***Load 3 function library --> CoreLib, Reusable, Scenario Lib
+	'***Load Web,Android and IOS object function library
 
 	'Get the scenario path
 	ScenarioFolderPath = Left (Environment.Value("TestDir"), Instr(Environment.Value("TestDir"), Environment.Value("TestName")) - 1)
 
 
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\CoreLib.qfl"
+
 	'Import Web Object Func Lib
 	LoadFunctionLibrary GetActualProjPath("FrameworkPath") & "Resources\WebObjectAction.qfl"
 	'Import Android Object Func Lib

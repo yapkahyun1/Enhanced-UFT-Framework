@@ -36,6 +36,7 @@ End Function
 
 
 
+
 'Function for simulating keyboard inputs, can input more
 Function SendKeys(Keyword)
 	Set WsShell = CreateObject("WScript.Shell")
@@ -56,7 +57,7 @@ Function SendKeys(Keyword)
 End Function
 
 
-'functio not finished ---> WIP, dont use it yet
+'function not finished ---> WIP, dont use it yet
 Function JavaScriptClick(PageObj, WebObj)
 
 	Dim JavaScrpCmd 
@@ -93,4 +94,78 @@ Function SimulateMouseClick(ObjElement, TypeMouseClick)
 	Set MercuryObj = Nothing
 	
 End Function
+
+
+
+
+'***********************************************Verification Function***************************************************************
+
+
+Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
+	Dim ScreenshotPath, objectText
+	'Vbscript built in functions when encounter any error, it will continue on the next line and will not stop the script.
+	On Error Resume Next
+	objectText = trim(actualObject.GetROProperty("innertext"))
+	ScreenshotPath = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	'To catch any object error, Ex. Cannot identify the object "[ WebElement ]" (of class WebElement).
+	'If Err.Number IS NOT EQUAL to "0"
+	If Err.Number <> 0 Then
+		ErrorDescription = Err.Description
+		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
+		'On Error GoTo 0
+		EndTestExecution()
+	Else
+		If expect = objectText Then
+			If ScreenCaptureOn = 1 Then
+					Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
+				Else
+					Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
+			End If
+			
+		Else
+			Reporter.Filter = rfEnableAll
+			Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
+			EndTestExecution()
+		End If
+	End If
+
+	objectText = ""
+End Function
+
+
+
+
+Function VerifyTextContains(actualObject, expected, ScreenCaptureOn, stepName)
+	
+	Dim objectText, strTakeScreenshot
+	On Error Resume Next
+	objectText = trim(actualObject.GetROProperty("innertext"))
+	strTakeScreenshot = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	
+	If Err.Number <> 0 Then
+		ErrorDescription = Err.Description
+		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
+		'On Error GoTo 0
+		EndTestExecution()
+	Else
+		If Instr(objectText, expected) > 0 Then
+			If ScreenCaptureOn=1 Then
+				
+					Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText, strTakeScreenshot
+				Else
+					Reporter.ReportEvent micPass, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " & objectText
+			End If
+	
+		Else
+			Reporter.ReportEvent micFail, stepName, "Expected Result:" & expected & vbNewLine & "Actual Result: " &  objectText, strTakeScreenshot
+		End If
+	End If
+
+	objectText = ""
+End Function
+
+
+'***********************************************Verification Function***************************************************************
 

@@ -1,5 +1,6 @@
 ﻿	
-Reporter.Filter = rfDisableAll
+
+Reporter.Filter = rfEnableErrorsOnly
 
 
 LoadFunctionLibrary "C:\Users\HP\OneDrive\Desktop\UFT Framework Enhanced\Enhanced-UFT-Framework\Reusable Library\LoadDependencies.qfl"
@@ -19,7 +20,7 @@ LaunchAOSWeb()
 Environment.Value("CurrActiveScreen") = "Advantage Shopping"
 Set AOSBrowser = Browser("title:=Advantage Shopping")
 Set AOSPage = AOSBrowser.Page("title:=Advantage Shopping")
-wait 10
+wait 15
 
 '
 '
@@ -27,12 +28,15 @@ wait 10
 'Wait 10
 
 
-ScrollBy AOSPage, 0, 900
+
+
+Call ExecuteTestSteps("Step 1: Click Contact Us", AOSPage.WebElement("xpath:=//a[text()='CONTACT US']"), "Click", "", 1)
+wait 2
+'Call ExecuteTestSteps("Step 2: Click Account Icon", AOSPage.WebElement("xpath:=//a[@id='hrefUsessn']"), "Click", "", 1)
 
 
 
-
-
+VerifyTextTestingEnhancement "Step 2: Verify",  AOSPage.WebElement("xpath:=//span[text()='jkhj']"), "Expes", 1
 
 
 'Call ExecuteTestSteps(AOSPage.WebElement("xpath:=//a[@id='hrefUserIcon']"), "Click", "Step 1: Click Account Icon", "Account", 1)
@@ -77,7 +81,6 @@ ScrollBy AOSPage, 0, 900
 
 
 
-
 'Call ExecuteTestSteps(, "Click", , "Account", 1)
 'WaitObject AOSPage.WebElement("xpath:=//input[@name='username']"), 10
 'Call ExecuteTestSteps(AOSPage.WebEdit("xpath:=//input[@name='username']"), "Set", "Step 2: Set Username", DataTable("Username", dtGlobalSheet), 1)
@@ -88,6 +91,7 @@ ScrollBy AOSPage, 0, 900
 'CloseBrowser()
 
 'JavaScriptClick AOSPage, "//span[text()='TABLETS']"
+
 
 
 

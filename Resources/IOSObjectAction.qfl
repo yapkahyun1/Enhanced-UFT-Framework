@@ -1,4 +1,4 @@
-﻿
+﻿'Not yet ready still WIP
 Function ScrollIOS()
 	wait 3
 	Reporter.Filter = rfDisableAll
@@ -8,3 +8,27 @@ Function ScrollIOS()
 End Function
 
 
+'Not yet ready still WIP
+Function VerifyTextIOS(actualObject, expect, ScreenCaptureOn, stepName)
+
+
+	objectText = trim(actualObject.GetTOProperty("text"))
+
+	
+	ScreenshotPath = TakeScreenshot()
+	Reporter.Filter = rfEnableAll
+	If expect = objectText Then
+		If ScreenCaptureOn = 1 Then
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText, ScreenshotPath
+			Else
+				Reporter.ReportEvent micPass, stepName, "Expected Result:" & expect & vbNewLine & "Actual Result: " & objectText
+		End If
+		
+	Else
+		Reporter.Filter = rfEnableAll
+		Reporter.ReportEvent micFail,"Verification Failed" & label, "Expected Result:" & expect & vbNewLine & "Actual Result: " &  objectText, ScreenshotPath
+		EndTestExecution()
+	End If
+
+	objectText = ""
+End Function
