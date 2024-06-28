@@ -113,7 +113,6 @@ Function VerifyText(actualObject, expect, ScreenCaptureOn, stepName)
 	If Err.Number <> 0 Then
 		ErrorDescription = Err.Description
 		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
-		'On Error GoTo 0
 		EndTestExecution()
 	Else
 		If expect = objectText Then
@@ -139,15 +138,16 @@ End Function
 Function VerifyTextContains(actualObject, expected, ScreenCaptureOn, stepName)
 	
 	Dim objectText, strTakeScreenshot
+	'Vbscript built in functions when encounter any error, it will continue on the next line and will not stop the script.
 	On Error Resume Next
 	objectText = trim(actualObject.GetROProperty("innertext"))
 	strTakeScreenshot = TakeScreenshot()
 	Reporter.Filter = rfEnableAll
-	
+	'To catch any object error, Ex. Cannot identify the object "[ WebElement ]" (of class WebElement).
+	'If Err.Number IS NOT EQUAL to "0"
 	If Err.Number <> 0 Then
 		ErrorDescription = Err.Description
 		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
-		'On Error GoTo 0
 		EndTestExecution()
 	Else
 		If Instr(objectText, expected) > 0 Then
