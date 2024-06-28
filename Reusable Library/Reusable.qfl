@@ -1,5 +1,4 @@
 ﻿
-'
 Function LaunchIRakyatPortal()
 	
 	LaunchBrowser DataTable("BrowserType", dtGlobalSheet), DataTable("URL", dtGlobalSheet)
@@ -11,40 +10,27 @@ Function LaunchIRakyatPortal()
 End Function
 
 
-
-Function LaunchAOSWeb()
-	
-	LaunchBrowser DataTable("BrowserType", dtGlobalSheet), DataTable("URL", dtGlobalSheet)
-	Wait 5
-	
-	'Set AI Context to the Browser
-	AIUtil.SetContext Browser("CreationTime:=0")
-	
-	
-	
-End Function
-
-
-'Function not completed
 Function LoginiRakyat()
-	
-	
-	Call ExecuteTestSteps("Login Step 1: Enter Username", iRakyatPage.WebEdit("xpath:=//INPUT[@id='username']"), "Set", "Test", 1)
 
+	Environment.Value("CurrActiveScreen") = "iRakyat"
+	Set iRakyatBrowser = Browser("title:=iRakyat")
+	Set iRakyatPage = iRakyatBrowser.Page("title:=iRakyat")
+	
+	WaitObject iRakyatPage.WebEdit("xpath:=//INPUT[@id='username']"), 20
+	Call ExecuteTestSteps("Login Step 1: Set Username", iRakyatPage.WebEdit("xpath:=//input[@id='username']"), "Set", getUserProperties("UserID"), 1)
 	Call ExecuteTestSteps("Login Step 2: Click Login Button", iRakyatPage.WebButton("xpath:=//input[@value='Login']"), "Click", "", 1)
-	
 	WaitObject iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), 15
-
-
-
 	Call ExecuteTestSteps("Login Step 3: Click Yes Button", iRakyatPage.WebButton("xpath:=//div[contains(text(), 'Is this your Secure Phrase')]//following::input[@value='Yes']"), "Click", "", 1)
-	
+	WaitObject iRakyatPage.WebEdit("xpath:=//input[@id='password']"), 15
+	Call ExecuteTestSteps("Login Step 4: Set Passwoed", iRakyatPage.WebEdit("xpath:=//input[@id='password']"), "Set", getUserProperties("Password"), 1)
+	Call ExecuteTestSteps("Login Step 5: Click Login Button", iRakyatPage.WebButton("xpath:=//input[@value='Login']"), "Click", "", 1)
+	WaitObject iRakyatPage.WebElement("xpath:=//p[contains(text(), 'Your last successful login')]"), 15
 	
 End Function
 
 
 
-
+'Not Confirmed - WIP
 Function LaunchiRakyatMobile()
 	LaunchApp DataTable("OSType", dtGlobalSheet), DataTable("DeviceID", dtGlobalSheet), DataTable("Identifier", dtGlobalSheet), DataTable("Instrumented", dtGlobalSheet)
 End Function

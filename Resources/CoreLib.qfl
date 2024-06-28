@@ -14,7 +14,9 @@ End Function
 Function GetProjPath()
 
 	Dim filePath, getProjPathPos, ActProjectPath
+	'USe UFT Builti in function to get current test script location
 	filePath = Environment.Value("TestDir")
+	'Use Instr to get the position of the root folder and use Left function to filter and get the root folder path
 	getProjPathPos = Instr(filePath, "\TestScript")
 	ActProjectPath = Left(filePath, getProjPathPos)
 	
@@ -51,9 +53,7 @@ Function ExecuteTestSteps(stepName, ObjElement, action, TestData, ScreenCaptureO
 	If Err.Number <> 0 Then
 		ErrorDescription = Err.Description
 		Reporter.ReportHtmlEvent micFail, stepName, ErrorDescription, ScreenshotPath
-		
-		'**On Error Resume Next** will allow the script to continue executing if there is an error until it reaches the line where it generates the failed test steps, use the line below to reset the error handling to default behavior which is vbscript to halt the execution and display the error message
-		'On Error GoTo 0
+		'If error occurs this function will end the current test
 		EndTestExecution()
 	Else
 		'If ScreenCaptureOn receives Value "1" it will capture screenshot in html report
@@ -86,14 +86,13 @@ Function getConfigProperties(configPropertiesType)
 		Else
 			Set configFile = FSO.OpenTextFile(configLocation, ForReading, False)
 			Do While configFile.AtEndOfStream <> True
+				outputStr = configFile.ReadLine
 				If Left(outputStr, Len(configPropertiesType)) = configPropertiesType Then
 					SplitStr = Split(outputStr, "=")(1)
 					Exit Do
 				End If
 			
 			Loop
-		
-			
 			configFile.Close
 		
 			getConfigProperties = SplitStr
@@ -156,7 +155,7 @@ Function ImportTestDataFromExcel(ExcelTestDataFileName, ExcelTestDataSheet)
 	
 	configVal = UCase(getConfigProperties("Environment"))
 	Print(configVal)
-	
+	'Error handling if input invalid name for test data environment
 	If NOT configVal = "SIT" and NOT configVal = "UAT" and NOT configVal = "STAGING" Then
 			MsgBox "There is no such environment test data available! Please check your config files", 0,"Configuration Error"
 		Else
@@ -382,10 +381,7 @@ End Function
 
 Function GenerateRndText(TypeOfChar, LetterCase, TextRange)
 
-
 	Dim Alphabet, AlphabetLCase, NumericVal, LenChar, SelectedVal, RandomIndex, RandomText
-	
-
 	Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	NumericVal = "123456789"
 	AlphabetLCase = "abcdefghijklmnopqrstuvwxyz"
@@ -393,7 +389,7 @@ Function GenerateRndText(TypeOfChar, LetterCase, TextRange)
 	
 	Select Case UCase(TypeOfChar)
 		'Gives the option to generate a mixture of alphabets and numbers
-		'If user wishes to generate random alphanumerical value, the variable will contain an appended of Alphabet, Number and Lower Case Alphabet for more flexibility
+		'If user wishes to generate random alphanumerical value, the variable will contain a mixture of Alphabet, Number and Lower Case Alphabet for more flexibility
 		Case "ALPHANUMERIC", "ALPHANUMERICAL", "ALPHABETNUMERIC", "ALPHABETNUMERICAL", "ALPHA NUMERIC", "ALPHA NUMERICAL", "ALPHABET NUMERIC", "ALPHABET NUMERICAL"
 			SelectedVal = Alphabet & NumericVal & AlphabetLCase
 		Case "ALPHABET", "ALPHA", "LETTER"

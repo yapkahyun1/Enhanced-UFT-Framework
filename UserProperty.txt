@@ -1,14 +1,13 @@
 #Web Automation Configuration
-URL=https://advantageonlineshopping.com/#/
+URL=https://10.2.100.187/personal/login/login.do
 Browser=Google
 
 
-#Account Credential
-AccountNumber=8881048415068
+#User ID Credential
+UserID=amirul12345
+Password=P@assword123
 
 
-
-#User ID
 
 
 
